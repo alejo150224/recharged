@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disney Characters</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f0f0f0;
+            
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        .logo img {
+            height: 40px;
+            margin-right: 10px;
+        }
+        .search-bar {
+            padding: 10px;
+            border-radius: 20px;
+            border: none;
+            background-color: #f0f0f0;
+            width: 300px;
+        }
+        .menu-icon {
+            font-size: 24px;
+        }
+        .character-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        .character-card {
+            border-radius: 20px;
+            padding: 20px;
+            text-align: center;
+            color: white;
+            position: relative;
+            height: 300px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            overflow: visible;
+            cursor: pointer;
+        }
+        .character-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        
+        .character-card img {
+            position: absolute;
+            top: -40px;
+            left: 60%;
+            transform: translateX(-50%);
+            max-height: 300px;
+            transition: transform 0.3s ease;
+        }
+        .character-card:hover img {
+            transform: translateX(-50%) scale(1.1);
+        }
+        .character-info {
+            transition: transform 0.3s ease;
+            text-align: left;
+        }
+        .character-card:hover .character-info {
+            transform: translateY(-20px);
+        }
+        .character-card h2 {
+            margin: 0;
+            font-size: 24px;
+        }
+        .character-card p {
+            margin: 5px 0 0;
+            font-size: 14px;
+        }
+        .read-more {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            right: 0;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            text-align: left;
+        }
+        .character-card:hover .read-more {
+            opacity: 1;
+        }
+        .read-more a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 14px;
+            text-transform: uppercase;
+        }
+        footer {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        .social-links a {
+            margin-right: 10px;
+            color: #666;
+            text-decoration: none;
+        }
+        .navigation {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .navigation a {
+            margin-left: 10px;
+            color: #666;
+            text-decoration: none;
+        }
+        .nav-button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .nav-button:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+        }
+        .modal-content {
+            background-color: #fff;
+            margin: 5% auto;
+            padding: 20px;
+            border-radius: 20px;
+            width: 80%;
+            max-width: 1000px;
+            position: relative;
+            display: flex;
+            overflow: hidden;
+        }
+        .modal-sidebar {
+            width: 25%;
+            background-color: #f0f0f0;
+            padding: 20px;
+            overflow-y: auto;
+        }
+        .modal-main {
+            width: 75%;
+            display: flex;
+            background-color: #3498db;
+            color: white;
+            padding: 40px;
+            position: relative;
+        }
+        .modal-image {
+            width: 40%;
+            padding-right: 40px;
+        }
+        .modal-image img {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+        }
+        .modal-details {
+            width: 60%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: white;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .close:hover,
+        .close:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .character-detail {
+            display: flex;
+            margin-bottom: 20px;
+        }
+        .character-detail img {
+            width: 40%;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+        .character-detail-info {
+            width: 60%;
+            padding-left: 20px;
+        }
+        .movie-logo {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 100px;
+        }
+        .character-name {
+            font-size: 48px;
+            margin-bottom: 10px;
+        }
+        .character-movie {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .character-description {
+            font-size: 16px;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+        .clips-section {
+            margin-top: auto;
+        }
+        .clips-title {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        .clips-container {
+            display: flex;
+            gap: 10px;
+            overflow-x: auto;
+        }
+        .clip {
+            width: 150px;
+            height: 100px;
+            background-color: #2980b9;
+            border-radius: 10px;
+        }
+        .sidebar-character {
+            cursor: pointer;
+            padding: 10px 0;
+            font-size: 18px;
+        }
+        .sidebar-character.active {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Disney%2B_logo.svg/1200px-Disney%2B_logo.svg.png" alt="Disney logo">
+                <h1>Characters</h1>
+            </div>
+            <input type="text" class="search-bar" placeholder="Search characters....">
+            <div class="menu-icon">☰</div>
+        </header>
+        
+        <main class="character-grid">
+            <div class="character-card" style="background: rgb(230,164,164);
+background: linear-gradient(128deg, rgba(230,164,164,1) 20%, rgba(255,107,107,1) 50%, rgba(253,90,90,1) 80%);" data-character="rosetta">
+                <img class="character-card-image" src="img/ctl1.png" alt="Rosetta">
+                <div class="character-info">
+                    <h2>Nombre</h2>
+                    <p>Categoria: Nombre</p>
+                </div>
+                <div class="read-more">
+                    <a href="#">READ MORE &gt;</a>
+                </div>
+            </div>
+            <div class="character-card" style="background: rgb(163,190,231);
+background: linear-gradient(128deg, rgba(163,190,231,1) 20%, rgba(77,150,255,1) 50%, rgba(89,157,255,1) 80%);" data-character="sadness">
+                <img class="character-card-image" src="img/ctl2.png" alt="Sadness">
+                <div class="character-info">
+                    <h2>Nombre</h2>
+                    <p>Categoria: Nombre</p>
+                </div>
+                <div class="read-more">
+                    <a href="#">READ MORE &gt;</a>
+                </div>
+            </div>
+            <div class="character-card" style="background: rgb(162,232,171);
+background: linear-gradient(128deg, rgba(162,232,171,1) 20%, rgba(73,200,89,1) 50%, rgba(88,255,110,1) 80%);" data-character="disgust">
+                <img class="character-card-image" src="img/ctl1.png" alt="Disgust">
+                <div class="character-info">
+                    <h2>Nombre</h2>
+                    <p>Categoria: Nombre</p>
+                </div>
+                <div class="read-more">
+                    <a href="#">READ MORE &gt;</a>
+                </div>
+            </div>
+        </main>
+        
+        <footer>
+            <div class="social-links">
+                <a href="#">Facebook</a>
+                <a href="#">Twitter</a>
+            </div>
+            <div class="navigation">
+                <a href="#">&lt; Prev</a>
+                <a href="#">Next &gt;</a>
+            </div>
+        </footer>
+    </div>
+
+    <div id="characterModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-sidebar">
+                <h2>Characters</h2>
+                <div id="characterList"></div>
+            </div>
+            <div class="modal-main">
+                <span class="close">&times;</span>
+                <img class="movie-logo" src="/placeholder.svg?height=50&width=100" alt="Movie Logo">
+                <div class="modal-image">
+                    <img id="characterImage" src="" alt="Character">
+                </div>
+                <div class="modal-details">
+                    <h2 class="character-name"></h2>
+                    <p class="character-movie"></p>
+                    <p class="character-description"></p>
+                    <div class="clips-section">
+                        <h3 class="clips-title">Clips</h3>
+                        <div class="clips-container">
+                            <div class="clip"></div>
+                            <div class="clip"></div>
+                            <div class="clip"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const characters = {
+            rosetta: {
+                name: "Rosetta",
+                movie: "Tinkerbell",
+                image: "img/ctl1.png",
+                description: "Rosetta is a garden-talent fairy who is gentle and well-mannered, but also has a quick wit and a ton of charm.",
+                clips: ["img/fonside1.jpg", "/placeholder.svg?height=100&width=150", "/placeholder.svg?height=100&width=150"]
+            },
+            sadness: {
+                name: "Sadness",
+                movie: "Inside Out",
+                image: "https://static.wikia.nocookie.net/pixar/images/8/8b/Io_Sadness_standard.jpg",
+                description: "Sadness is literally the very definition and being of sorrow and gloom. She is hardly ever used because Joy is the boss and doesn't want Riley to ever be sad, even when she needs to be. Because of this, Joy treats Sadness badly.",
+                clips: ["/placeholder.svg?height=100&width=150", "/placeholder.svg?height=100&width=150", "/placeholder.svg?height=100&width=150"]
+            },
+            disgust: {
+                name: "Disgust",
+                movie: "Inside Out",
+                image: "https://static.wikia.nocookie.net/pixar/images/5/52/Io_Disgust_standard.jpg",
+                description: "Disgust is one of the five emotions inside the mind of Riley Andersen. She is sarcastic and tends to prevent Riley from being poisoned physically and socially.",
+                clips: ["/placeholder.svg?height=100&width=150", "/placeholder.svg?height=100&width=150", "/placeholder.svg?height=100&width=150"]
+            }
+        };
+
+        const modal = document.getElementById("characterModal");
+        const characterCards = document.querySelectorAll(".character-card");
+        const closeBtn = document.querySelector(".close");
+        const characterImage = document.getElementById("characterImage");
+        const characterName = document.querySelector(".character-name");
+        const characterMovie = document.querySelector(".character-movie");
+        const characterDescription = document.querySelector(".character-description");
+        const characterList = document.getElementById("characterList");
+
+        function openModal(character) {
+            modal.style.display = "block";
+            updateCharacterDetail(character);
+            updateCharacterList(character);
+        }
+
+        function closeModal() {
+            modal.style.display = "none";
+        }
+
+        function updateCharacterDetail(character) {
+            const char = characters[character];
+            characterImage.src = char.image;
+            characterImage.alt = char.name;
+            characterName.textContent = char.name;
+            characterMovie.textContent = `Movie: ${char.movie}`;
+            characterDescription.textContent = char.description;
+        }
+
+        function updateCharacterList(activeCharacter) {
+            characterList.innerHTML = Object.keys(characters).map(char => `
+                <div class="sidebar-character ${char === activeCharacter ? 'active' : ''}" data-character="${char}">
+                    ${characters[char].name}
+                </div>
+            `).join('');
+
+            const sidebarCharacters = document.querySelectorAll('.sidebar-character');
+            sidebarCharacters.forEach(char => {
+                char.addEventListener('click', () => {
+                    updateCharacterDetail(char.dataset.character);
+                    sidebarCharacters.forEach(c => c.classList.remove('active'));
+                    char.classList.add('active');
+                });
+            });
+        }
+
+        characterCards.forEach(card => {
+            card.addEventListener("click", () => openModal(card.dataset.character));
+        });
+
+        closeBtn.addEventListener("click", closeModal);
+
+        window.addEventListener("click", (event) => {
+            if (event.target === modal) {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+</html>

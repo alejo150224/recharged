@@ -1,0 +1,323 @@
+*{
+  margin: 0px;
+  padding: 0px;
+}
+/* Agrega estas variables al principio de tu archivo CSS */
+:root {
+  --oxford-blue: #1B2A40;
+  --silver: #C2C2C2;
+  --lime: #CCFF00;
+  --bole: #7f534b;
+  --shamrock-green: #109648;
+}
+
+body{
+  background: #343436;
+  font-family: "Open Sans", sans-serif;
+}
+
+.container {
+  width: 1200px;
+  height: auto;
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 0;
+  overflow: visible;
+}
+
+.card {
+  position: relative;
+  top: 0;
+  left: 20px;
+  width: 300px;
+  height: 500px;
+  margin: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 40px 30px;
+  box-sizing: border-box;
+}
+
+.card-wrapper {
+  position: relative;
+  width: 340px;
+  height: 560px;
+  overflow: hidden;
+}
+.card-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 340px;
+  height: 560px;
+  border-radius: 20px;
+  z-index: 1;
+  overflow: hidden;
+}
+.card-wrapper:nth-child(1) .card-background {
+  background: #fb2f73;
+}
+
+.card-wrapper:nth-child(2) .card-background {
+  background: #2f8afb;
+}
+
+.card-wrapper:nth-child(3) .card-background {
+  background: #2ffb87;
+}
+.card-container {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  margin-bottom: 50px;
+}
+
+.box-menu{
+  float: left;
+}
+
+.box-menu::focus {
+    outline: none;
+}
+
+.trigger{
+  position: relative;
+  width: 50px;
+  height: 33px;
+  background: transparent;
+  border: none;
+  overflow: hidden;
+  text-indent: 100%;
+  color: transparent;
+  white-space: nowrap;
+  cursor: pointer;
+  outline: none;
+  float: left;
+}
+
+.trigger span.menu-icon,
+.trigger span.menu-icon::before{
+  position: absolute;
+  width: 30px;
+  height: 2px;
+  background: #404444;
+}
+
+.trigger span {
+  top: 10px;
+  left: calc(50% - 15px);
+  transition: transform .3s;
+}
+
+.trigger span.menu-icon::before{
+  content:"";
+  top: 10px;
+  left: 0;
+}
+
+.box-menu ul.list-menu{
+  float: left;
+  margin-top: 8px;
+}
+
+.box-menu li{
+  float: left;
+  margin: 0px 8px;
+  width: 15px;
+  height: 15px;
+  border: inset 1px rgba(0,0,0,0.2);
+  list-style: none;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: transform 0.2s linear;
+  backface-visibility: hidden;
+}
+
+.box-menu li:hover{
+  transform: scale(1.2);
+}
+
+.details{
+  float: right;
+  color: #404444;
+  text-transform: uppercase;
+  font-weight: 500;
+  margin: 5px 5px 0px 0px;
+}
+
+/*.trigger:hover span.menu-icon, */
+.active{
+  transform: rotate(90deg) translateY(-3px) translateX(3px);
+}
+
+.captit {
+  text-align: center;
+  color: #404444;
+  margin-top: 20px;
+}
+.title::before{
+  content: "";
+  width: 40px;
+  height: 2px;
+  background: rgba(64, 68, 68, 0.7);
+  display: block;
+  margin: 10px auto 15px auto;
+}
+
+span.title{
+  font-size: 22px;
+  
+}
+.captit h1{
+  font-size: 50px;
+  margin-bottom: 10px;
+}
+
+.captit h2{
+  font-size: 30px;
+  margin-top: -10px;
+}
+
+.paragraph {
+  color: #fff;
+  text-align: center;
+  z-index: 5;
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: static;
+}
+
+.paragraph p {
+  font-size: 14px;
+  line-height: 1.4;
+  margin-bottom: 50px;
+}
+
+.paragraph a.button {
+  background: #fb2f73;
+  border-radius: 35px;
+  padding: 10px 20px;
+  text-decoration: none;
+  color: #fff;
+  font-weight: 500;
+  font-size: 14px;
+  letter-spacing: 0.1px;
+  transition: all 0.25s linear;
+  display: inline-block;
+  margin-top: 10px;
+  position: absolute;
+  bottom: -10px;
+}
+.paragraph a.button2 {
+  background: #2f8afb;
+  border-radius: 35px;
+  padding: 10px 20px;
+  text-decoration: none;
+  color: #fff;
+  font-weight: 500;
+  font-size: 14px;
+  letter-spacing: 0.1px;
+  transition: all 0.25s linear;
+  display: inline-block;
+  margin-top: 10px;
+  position: absolute;
+  bottom: -10px;
+}
+.paragraph a.button3 {
+  background: #2ffb87;
+  border-radius: 35px;
+  padding: 10px 20px;
+  text-decoration: none;
+  color: #fff;
+  font-weight: 500;
+  font-size: 14px;
+  letter-spacing: 0.1px;
+  transition: all 0.25s linear;
+  display: inline-block;
+  margin-top: 10px;
+  position: absolute;
+  bottom: -10px;
+}
+
+.paragraph a.button:hover {
+  background: #b2365f !important;
+  color: #fff;
+}
+.paragraph a.button2:hover {
+  background: #5186c7 !important;
+  color: #fff;
+}
+.paragraph a.button3:hover {
+  background: #49ce82 !important;
+  color: #fff;
+}
+.card-wrapper:nth-child(2) .paragraph a.button {
+  color: #2f8afb;
+}
+
+.card-wrapper:nth-child(2) .paragraph a.button:hover {
+  background: #2f8afb !important;
+  color: #fff;
+}
+
+.card-wrapper:nth-child(3) .paragraph a.button {
+  color: #2ffb87;
+}
+
+.card-wrapper:nth-child(3) .paragraph a.button:hover {
+  background: #2ffb87 !important;
+  color: #fff;
+}
+
+.big-circle {
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: #404444e6;
+  bottom: -60%;
+  right: -40%;
+  z-index: 2;
+}
+
+.white-circle {
+  position: absolute;
+  width: 560px;
+  height: 520px;
+  background: #fff;
+  border-radius: 50%;
+  bottom: -70%;
+  left: -40%;
+  z-index: 3;
+  overflow: hidden;
+}
+
+.angolo {
+  background: #fff;
+  width: 300px;
+  height: 400px;
+  float: right;
+  margin-top: -30px;
+  margin-right: -90px;
+  border-radius: 20px;
+  transform: rotate(-45deg);
+}
+
+.small-circle {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  background: transparent;
+  z-index: 0;
+  top: 48%;
+  left: -19%;
+  border-radius: 50%;
+  border: solid 50px #404444e6;
+}
+

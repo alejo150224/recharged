@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personajes Marvel</title>
+    <style>
+        @font-face {
+            font-family: league;
+            src: url(font/LeagueSpartan-SemiBold.ttf);
+        }
+        @font-face {
+            font-family: aleo;
+            src: url(font/Aleo-ExtraLightItalic.ttf);
+        }
+        /* Estilos generales */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .bodi-med {
+            font-family: 'Roboto', sans-serif;
+            color: #FFFFFF;
+            background-size: cover;
+            display: flex;
+            overflow: hidden;
+            transition: background 0.5s ease;
+            background-image: url('img/fon1.jpg_large'); /* Fondo inicial */
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        .sidebar-left {
+            width: 20vw;
+            height: 100vh;
+            background-image: url('img/sidebar-bg.jpg'); /* Imagen de fondo en la barra lateral */
+            backdrop-filter: blur(10px);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            position: relative;
+            animation: slideInLeft 0.7s ease-in-out;
+        }
+
+        .sidebar-left .ul-med {
+            list-style: none;
+        }
+
+        .sidebar-left .ul-med .li-med {
+            margin: 20px 0;
+            cursor: pointer;
+            background-size: cover;
+            background-position: center;
+            height: 15vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            font-weight: bold;
+            text-transform: uppercase;
+            position: relative;
+            transition: all 0.3s ease;
+            transform: translateX(-100px);
+            animation: slideInLeft 0.5s ease forwards;
+            animation-delay: calc(0.2s * var(--i));
+        }
+        /* Estilo especial para el elemento activo */
+        .sidebar-left .ul-med .li-med.active {
+            border: 2px solid #fff; /* Borde blanco para resaltar */
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.7); /* Efecto de iluminación */
+            transform: scale(1.05); /* Un ligero aumento de tamaño */
+        }
+
+        .sidebar-left .ul-med .li-med.capitan-america {
+            background-image: url(img/fonside1.jpg);
+        }
+
+        .sidebar-left .ul-med .li-med.iron-man {
+            background-image: url(img/fonside2.jpg);
+        }
+
+        .sidebar-left .ul-med .li-med.thor {
+            background-image: url(img/fonside3.jpg);
+        }
+
+        .sidebar-left .ul-med .li-med.doctor-strange {
+            background-image: url(img/fonside4.jpg);
+        }
+
+        .sidebar-left .ul-med .li-med.black-widow {
+            background-image: url(img/fonside5.jpg);
+        }
+
+        .scroll-indicator {
+            writing-mode: vertical-rl;
+            text-align: center;
+            transform: rotate(180deg);
+            font-size: 14px;
+            color: #9a9abb;
+        }
+
+        .main-med {
+            flex: 1;
+            padding: 100px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        /* Estilos específicos para cada personaje */
+        .hero {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            display: none; /* Ocultar inicialmente */
+            padding: 20px;
+            opacity: 0;
+            transform: scale(0.9);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .hero.active {
+            display: block; /* Mostrar solo el personaje seleccionado */
+            animation: fadeInUp 0.5s ease forwards;
+        }
+
+        /* Ejemplo de estilo específico para Capitán América */
+        .hero.capitan-america .h1-med {
+            font-size: 56px;
+            color: #cdcdcd;
+            position: absolute;
+            top: 28%;
+            left: 10%;
+            font-family: league;
+            animation: fadeInLeft 1s ease-in-out;
+        }
+
+        .hero.capitan-america .img-med {
+            width: 380px;
+            position: absolute;
+            right: 10%;
+            top: 12%;
+            animation: fadeInRight 1s ease-in-out;
+        }
+
+        .hero.capitan-america .p-med {
+            position: absolute;
+            bottom: 10%;
+            left: 10%;
+            max-width: 500px;
+            font-size: 16px;
+            color: #ffffff;
+            font-family: aleo;
+            font-weight: bold;
+            animation: fadeInUp 1s ease-in-out;
+        }
+
+        /* Ejemplo de estilo específico para Iron Man */
+        .hero.iron-man .h1-med {
+            font-size: 50px;
+            color: #000000;
+            position: absolute;
+            top: 15%;
+            left: 5%;
+            font-family: league;
+            animation: fadeInLeft 1s ease-in-out;
+        }
+
+        .hero.iron-man .img-med {
+            width: 450px;
+            position: absolute;
+            right: 5%;
+            top: 5%;
+            animation: fadeInRight 1s ease-in-out;
+        }
+
+        .hero.iron-man .p-med {
+            position: absolute;
+            bottom: 25%;
+            left: 5%;
+            max-width: 600px;
+            font-size: 18px;
+            color: #000000;
+            font-family: aleo;
+            font-weight: bolder;
+            animation: fadeInUp 1s ease-in-out;
+        }
+
+        /* Ejemplo de estilo específico para Thor */
+        .hero.thor .h1-med {
+            font-size: 50px;
+            color: #000000;
+            position: absolute;
+            top: 15%;
+            left: 5%;
+            font-family: league;
+            animation: fadeInLeft 1s ease-in-out;
+        }
+
+        .hero.thor .img-med {
+            width: 380px;
+            position: absolute;
+            right: 10%;
+            top: 12%;
+            animation: fadeInRight 1s ease-in-out;
+        }
+
+        .hero.thor .p-med {
+            position: absolute;
+            bottom: 10%;
+            left: 5%;
+            max-width: 600px;
+            font-size: 18px;
+            color: #000000;
+            font-family: aleo;
+            font-weight: bolder;
+            animation: fadeInUp 1s ease-in-out;
+        }
+
+        /* Ejemplo de estilo específico para Doctor Strange */
+        .hero.doctor-strange .h1-med {
+            font-size: 50px;
+            color: #000000;
+            position: absolute;
+            top: 15%;
+            left: 5%;
+            font-family: league;
+            animation: fadeInLeft 1s ease-in-out;
+        }
+
+        .hero.doctor-strange .img-med {
+            width: 450px;
+            position: absolute;
+            right: 5%;
+            top: 5%;
+            animation: fadeInRight 1s ease-in-out;
+        }
+
+        .hero.doctor-strange .p-med {
+            position: absolute;
+            bottom: 25%;
+            left: 5%;
+            max-width: 600px;
+            font-size: 18px;
+            color: #ffffff;
+            font-family: aleo;
+            font-weight: bolder;
+            animation: fadeInUp 1s ease-in-out;
+        }
+
+        /* Ejemplo de estilo específico para Black Widow */
+        .hero.black-widow .h1-med {
+            font-size: 50px;
+            color: #000000;
+            position: absolute;
+            top: 15%;
+            left: 5%;
+            font-family: league;
+            animation: fadeInLeft 1s ease-in-out;
+        }
+
+        .hero.black-widow .img-med {
+            width: 450px;
+            position: absolute;
+            right: 5%;
+            top: 5%;
+            animation: fadeInRight 1s ease-in-out;
+        }
+
+        .hero.black-widow .p-med {
+            position: absolute;
+            bottom: 25%;
+            left: 5%;
+            max-width: 600px;
+            font-size: 18px;
+            color: #000000;
+            font-family: aleo;
+            font-weight: bolder;
+            animation: fadeInUp 1s ease-in-out;
+        }
+        /* Keyframes para las animaciones */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                transform: translateX(-100px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bodi-med">
+        <aside class="sidebar-left">
+            <ul class="ul-med"> 
+                <li class="li-med capitan-america" onclick="showHero('capitan-america')" style="--i: 1;">Capitán América</li>
+                <li class="li-med iron-man" onclick="showHero('iron-man')" style="--i: 2;">Iron Man</li>
+                <li class="li-med thor" onclick="showHero('thor')" style="--i: 3;">Thor</li>
+                <li class="li-med doctor-strange" onclick="showHero('doctor-strange')" style="--i: 4;">Doctor Strange</li>
+                <li class="li-med black-widow" onclick="showHero('black-widow')" style="--i: 5;">Black Widow</li>
+            </ul>
+            
+        </aside>
+    
+        <main class="main-med">
+            <!-- Sección para Capitán América -->
+            <section class="hero capitan-america active">
+                <h1 class="h1-med">Neymar Jr</h1>
+                <img class="img-med" src="img/ney4.png" alt="Capitán América">
+                <p class="p-med">Neymar da Silva Santos Júnior, más conocido como Neymar Jr., es uno de los futbolistas más talentosos y reconocidos de su generación. Nacido en Mogi das Cruzes, Brasil, en 1992, Neymar comenzó a destacar desde muy joven en las categorías inferiores del Santos FC.
+                    Ascenso meteórico y reconocimi
+                    Debut profesional: A los 17 años, Neymar hizo su debut profesional con el Santos, donde rápidamente se convirtió en una figura clave y cautivó a los aficionados con su habilidad, regates y goles.
+                    Éxitos en Brasil: Conquistó numerosos títulos con el Santos, incluyendo la Copa Libertadores, la máxima competición a nivel de clubes en Sudamérica.
+                    Fichaje por el Barcelona: Su talento lo llevó a Europa, donde fichó por el Barcelona, uno de los clubes más grandes del mundo. Junto a Lionel Messi y Luis Suárez formó una de las delanteras más temibles de la historia del fútbol.
+                    </p>
+            </section>
+    
+            <!-- Sección para Iron Man -->
+            <section class="hero iron-man">
+                <h1 class="h1-med">Neymar En Paris</h1>
+                <img class="img-med" src="img/1.png" alt="Iron Man">
+                <p class="p-med">Iron Man, o Tony Stark, es un genio, millonario, playboy y filántropo. Usa su armadura tecnológica para proteger al mundo.
+                    El fichaje de Neymar Jr al Paris Saint-Germain en 2017 fue uno de los traspasos más caros de la historia del fútbol, generando gran expectativa en torno al jugador brasileño.
+                    Impacto inmediato: Neymar se convirtió rápidamente en una figura clave del PSG, aportando su talento, habilidad y capacidad goleadora.
+                    Títulos y reconocimiento: Conquistó numerosos títulos con el equipo parisino, incluyendo varias Ligas de Francia y copas nacionales. Fue elegido como el mejor jugador de la Ligue 1 en su primera temporada.
+                    Juego espectacular: Sus regates, asistencias y goles deleitaron a los aficionados y lo consolidaron como uno de los mejores jugadores del mundo.
+                    Proyecto ambicioso: Junto a Mbappé y otros cracks, Neymar formó parte de un proyecto ambicioso para llevar al PSG a la cima del fútbol europeo. </p>
+            </section>
+    
+            <!-- Sección para Thor -->
+            <section class="hero thor">
+                <h1 class="h1-med">Neymar En Brasil</h1>
+                <img class="img-med" src="img/ney5.png" alt="Thor">
+                <p class="p-med">Neymar Jr. comenzó su carrera futbolística en el Santos FC, uno de los clubes más populares de Brasil. Desde muy joven, su talento desbordante y su habilidad con el balón llamaron la atención de todos.
+    
+                    Los puntos clave de su paso por el Santos:
+                    
+                    Debut precoz: Con apenas 17 años, Neymar debutó en el primer equipo del Santos, demostrando una madurez y un talento fuera de lo común.
+                    Ascenso meteórico: Rápidamente se convirtió en una figura clave del equipo y en el ídolo de la afición santista. Su habilidad para regatear, su visión de juego y su capacidad goleadora lo convirtieron en uno de los jugadores más emocionantes de ver en el fútbol brasileño.
+                    Campeón de la Copa Libertadores: Uno de los momentos más destacados de su etapa en el Santos fue la conquista de la Copa Libertadores en 2011. En esta competición, Neymar demostró su calidad a nivel continental y marcó goles espectaculares.
+                    Reconocimiento mundial: Su desempeño en el Santos lo llevó a ser considerado uno de los jóvenes talentos más prometedores del mundo. Numerosos clubes europeos mostraron interés en ficharlo.
+                    Salida a Europa: En 2013, Neymar fue transferido al FC Barcelona, poniendo fin a una etapa exitosa en Brasil.</p>
+            </section>
+    
+            <!-- Sección para Doctor Strange -->
+            <section class="hero doctor-strange">
+                <h1 class="h1-med">Neymar En Barcelona</h1>
+                <img class="img-med" src="img/ney6.png" alt="Doctor Strange">
+                <p class="p-med">La llegada de Neymar al FC Barcelona en 2013 fue un fichaje que revolucionó el mundo del fútbol. El brasileño se unió a Lionel Messi y Luis Suárez para formar uno de los tridentes ofensivos más temibles de la historia.
+    
+                    Los puntos clave de su paso por el Barça:
+                    
+                    Un tridente de ensueño: Junto a Messi y Suárez, Neymar formó la famosa "MSN". Esta delantera destacó por su velocidad, habilidad y capacidad goleadora, deslumbrando a los aficionados con jugadas espectaculares.
+                    Títulos y éxitos: Con el Barcelona, Neymar conquistó numerosos títulos, incluyendo Ligas de España, Copas del Rey y la Champions League. Su contribución fue fundamental para los éxitos del equipo catalán.
+                    Estilo de juego vistoso: Neymar aportó al equipo su característico estilo de juego, con regates vertiginosos, pases precisos y goles espectaculares. Su habilidad para desequilibrar a las defensas era una constante.
+                    </p>
+            </section>
+    
+            <!-- Sección para Black Widow -->
+            <section class="hero black-widow">
+                <h1 class="h1-med">NEYMAR JR</h1>
+                <img class="img-med" src="img/ney7.png" alt=" Black Widow">
+                <p class="p-med">Neymar da Silva Santos Júnior, más conocido simplemente como Neymar, es uno de los futbolistas más talentosos y reconocidos de su generación. Desde sus inicios en Brasil hasta su llegada a Europa, su carrera ha estado marcada por el éxito, la polémica y una habilidad innata para el fútbol.Santos FC: Neymar comenzó su carrera profesional en el Santos FC, donde rápidamente se convirtió en una figura clave. Su desbordante talento, su capacidad goleadora y su habilidad para regatear lo convirtieron en uno de los jugadores más emocionantes del fútbol brasileño.
+                    Campeón de la Copa Libertadores: Con el Santos, conquistó la Copa Libertadores en 2011, demostrando su calidad a nivel continental y llamando la atención de los grandes clubes europeos.</p>
+            </section>
+        </main>
+    </div>
+        <script>
+            function showHero(hero) {
+    const heroes = document.querySelectorAll('.hero');
+    const sidebarItems = document.querySelectorAll('.sidebar-left ul li');
+    const bodiMed = document.querySelector('.bodi-med');  // Selecciona el div con clase bodi-med
+
+    heroes.forEach(h => {
+        if (h.classList.contains(hero)) {
+            h.classList.add('active');
+        } else {
+            h.classList.remove('active');
+        }
+    });
+
+    sidebarItems.forEach(item => {
+        if (item.classList.contains(hero)) {
+            item.classList.add('active');
+        } else {
+            item.classList.remove('active');
+        }
+    });
+
+    switch (hero) {
+        case 'capitan-america':
+            bodiMed.style.backgroundImage = "url('img/fon1.jpg_large')";
+            break;
+        case 'iron-man':
+            bodiMed.style.backgroundImage = "url('img/fondo.jpg')";
+            break;
+        case 'thor':
+            bodiMed.style.backgroundImage = "url('img/fondob.jpg')";
+            break;
+        case 'doctor-strange':
+            bodiMed.style.backgroundImage = "url('img/fondoba.jpg')";
+            break;
+        case 'black-widow':
+            bodiMed.style.backgroundImage = "url('img/fondop1.webp')";
+            break;
+        default:
+            bodiMed.style.backgroundImage = "url('img/fon1.jpg_large')";
+            break;
+    }
+}
+
+        </script>
+    
+    
+</body>
+</html>

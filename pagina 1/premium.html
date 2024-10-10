@@ -1,0 +1,1096 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/akar-icons-fonts"></script>
+    <link rel="stylesheet" href="premium.css">
+</head>
+<body>
+    <aside class="sidebar">
+        <div class="header">
+            <img src="logo.svg" />
+            <h1 class="nom-logo">ReCharged</h1>
+        </div>
+        <nav>
+            <a>
+              <i class="ai-search"></i>
+              <p>Busqueda</p>
+            </a>
+            <a href="index.html">
+                <i class="ai-home"></i>
+                <p><strong>Inicio</strong></p>
+              </a>
+            <a>
+              <i class="ai-folder"></i>
+              <p>Proyectos</p>
+            </a>
+            <a href="planes.html">
+              <i class="ai-dashboard"></i>
+              <p>Planes</p>
+            </a>
+            <a>
+              <i class="ai-person"></i>
+              <p>Equipo</p>
+            </a>
+            <a>
+              <i class="ai-envelope"></i>
+              <p>Soporte</p>
+            </a>
+            <a>
+              <i class="ai-gear"></i>
+              <p>Pagina2</p>
+            </a>
+          </nav>
+    </aside>
+    <main class="main-content">
+        
+            
+        </section>
+        <div class="container">
+            <h1 class="nom-catalogo">Catalogo Premium</h1>
+            <div class="container-neon">
+                <button class="button filter-button financiera-btn" data-filter="financiera">Asesoria Financiera</button>
+                <button class="button filter-button legal-btn" data-filter="legal">Asesoria Legal</button>
+                <button class="button filter-button barberia-btn" data-filter="barberia">Barberia</button>
+                <button class="button filter-button cuidado-btn" data-filter="cuidado">Cuidado Personal</button>
+                <button class="button filter-button compositores-btn" data-filter="compositores">Compositores</button>
+                <button class="button filter-button dj-btn" data-filter="dj">Dj's</button>
+                <button class="button filter-button idiomas-btn" data-filter="idiomas">Idiomas</button>
+                <button class="button filter-button marketing-btn" data-filter="marketing">Marketing</button>
+                <button class="button filter-button mentorias-btn" data-filter="mentorias">Mentorias</button>
+                <button class="button filter-button moda-btn" data-filter="moda">Moda</button>
+                <button class="button filter-button negocios-btn" data-filter="negocios">Negocios Internacionales</button>
+                <button class="button filter-button ocupacional-btn" data-filter="ocupacional">Salud Ocupacional</button>
+                <button class="button filter-button traders-btn" data-filter="traders">Traders</button>
+            </div>
+            <div class="card-grid">
+                <!-- Las tarjetas se agregarán dinámicamente con JavaScript -->
+            </div>
+        </div>
+    </main>
+    
+
+    <script>
+        const cards = [
+        {
+        img: 'https://tmssl.akamaized.net/images/foto/galerie/neymar-brazil-2023-1694521247-116480.jpg?lm=1694521259',
+        name: 'Nombre Tarjeta',
+        category: 'financiera',
+        personName: 'Nombre Persona',
+        c1: 'ingles',
+        age: '17',
+        genero: 'genero',
+        other: '1',
+        about: 'Descripción de la tarjeta...'
+    },
+    {
+        img: 'https://www.usmagazine.com/wp-content/uploads/2024/07/Soccer-Star-Neymar-Secretly-Welcomes-3rd-Baby-Meet-His-Newborn-Daughter-01-2024.jpg?w=1000&quality=86&strip=all',
+        name: 'Nombre Tarjeta',
+        category: 'legal',
+        personName: 'Nombre Persona',
+        c1: 'ingles',
+        age: '17',
+        genero: 'genero',
+        other: '2',
+        about: 'Descripción de la tarjeta...'
+    },
+    {
+        img: 'https://caracoltv.brightspotcdn.com/dims4/default/11df210/2147483647/strip/true/crop/640x430+0+0/resize/640x430!/format/webp/quality/90/?url=http%3A%2F%2Fcaracol-brightspot.s3.us-west-2.amazonaws.com%2Fff%2Fad%2F1e39e92849279de2ebb803882be8%2Fneymar.jpg',
+        name: 'Nombre Tarjeta',
+        category: 'barberia',
+        personName: 'Nombre Persona',
+        c1: 'ingles',
+        age: '17',
+        genero: 'genero',
+        other: '3',
+        about: 'Descripción de la tarjeta...'
+    },
+    {
+        img: 'https://www.psg.fr/media/240682/329218929_568069348680385_5529273533506148015_n.jpg?center=0.04405286343612335,0.48458149779735682&mode=crop&width=800&height=450&quality=60',
+        name: 'Nombre Tarjeta',
+        category: 'financiera',
+        personName: 'Nombre Persona',
+        c1: 'ingles',
+        age: '17',
+        genero: 'genero',
+        other: '4',
+        about: 'Descripción de la tarjeta...'
+    },
+    {
+        img: 'https://e0.365dm.com/23/08/768x432/skysports-neymar-psg-transfer-centre_6243493.jpg?20230807172700',
+        name: 'Nombre Tarjeta',
+        category: 'legal',
+        personName: 'Nombre Persona',
+        c1: 'ingles',
+        age: '17',
+        genero: 'genero',
+        other: '5',
+        about: 'Descripción de la tarjeta...'
+    },
+    {
+        img: 'https://i2-prod.mirror.co.uk/incoming/article30712176.ece/ALTERNATES/n615/1_MAIN-FBL-KSA-HILAL-NEYMAR.jpg ',
+        name: 'Nombre Tarjeta',
+        category: 'barberia',
+        personName: 'Nombre Persona',
+        c1: 'ingles',
+        age: '17',
+        genero: 'genero',
+        other: '6',
+        about: 'Descripción de la tarjeta...'
+    },
+    {
+        img: 'https://depor.com/resizer/v2/AVVBG6KXDNHI3JU2HU4ZVUCTLU.jpg?auth=8f074d85b2e157be0c786e8d752b99190b825e658e032e892a9b66bbd0d062bc&width=580&height=330&quality=90&smart=true',
+        name: 'Montaña',
+        category: 'financiera',
+        personName: 'John Doe',
+        c1: 'ingles',
+        age: '25',
+        genero: 'genero',
+        other: '7',
+        about: 'Una hermosa montaña...'
+    },
+    {
+        img: 'https://media.rpctv.com/p/a6394d286d6ba54ae9e24c2cc0a13d82/adjuntos/314/imagenes/018/657/0018657998/neymar-jrjpg.jpg',
+        name: 'Estadio',
+        category: 'cuidado',
+        personName: 'neymar jr',
+        c1: 'español',
+        age: '30',
+        genero: 'genero',
+        other: '8',
+        about: 'Un gran estadio de fútbol...'
+    },
+    {
+        img: 'https://a.espncdn.com/photo/2018/0117/r315533_1296x729_16-9.jpg',
+        name: 'Pintura',
+        category: 'compositores',
+        personName: 'Pablo Picasso',
+        c1: 'francés',
+        age: '45',
+        genero: 'genero',
+        other: '9',
+        about: 'Una obra de arte moderna...'
+    },
+    {
+        img: 'https://i2-prod.football.london/incoming/article29585206.ece/ALTERNATES/s615/0_Neymar.jpg',
+        name: 'Laboratorio',
+        category: 'dj',
+        personName: 'Marie Curie',
+        c1: 'polaco',
+        age: '35',
+        genero: 'genero',
+        other: '10',
+        about: 'Un laboratorio de investigación...'
+    },
+    {
+        img: 'https://ca-times.brightspotcdn.com/dims4/default/3aa565e/2147483647/strip/true/crop/2253x1502+0+0/resize/1200x800!/quality/75/?url=https%3A%2F%2Fcalifornia-times-brightspot.s3.amazonaws.com%2Fb1%2Fd8%2Fd0e4f46452181df3cff14c7cacfc%2F31fc83b3579542dfac5268a1dedd842e',
+        name: 'Nombre Tarjeta',
+        category: 'idiomas',
+        personName: 'Nombre Persona',
+        c1: 'ingles',
+        age: '17',
+        genero: 'genero',
+        other: '11',
+        about: 'Descripción de la tarjeta...'
+    },
+    {
+        img: 'https://okdiario.com/img/2022/07/01/neymar-psg-655x368.jpg',
+        name: 'Nombre Tarjeta',
+        category: 'marketing',
+        personName: 'Nombre Persona',
+        c1: 'ingles',
+        age: '17',
+        genero: 'genero',
+        other: '12',
+        about: 'Descripción de la tarjeta...'
+    },
+    {
+        img: 'https://www.record.com.mx/sites/default/files/articulos/2020/12/09/neymar.jpg',
+        name: 'Nombre Tarjeta',
+        category: 'mentorias',
+        personName: 'Nombre Persona',
+        c1: 'ingles',
+        age: '17',
+        genero: 'genero',
+        other: '13',
+        about: 'Descripción de la tarjeta...'
+    },
+    {
+        img: 'https://monesport.cat/app/uploads/sites/12/2022/10/europapress_4742342_neymar_jr_of_psg_during_the_uefa_champions_league_group_football_match-1-scaled.jpg',
+        name: 'Nombre Tarjeta',
+        category: 'moda',
+        personName: 'Nombre Persona',
+        c1: 'ingles',
+        age: '17',
+        genero: 'genero',
+        other: '14',
+        about: 'Descripción de la tarjeta...'
+    },
+    {
+        img: 'https://s.france24.com/media/display/a7b5d20c-f246-11e8-a0a5-005056a964fe/w:980/p:16x9/neymar_operacion_psg_real_madrid.jpg',
+        name: 'Nombre Tarjeta',
+        category: 'negocios',
+        personName: 'Nombre Persona',
+        c1: 'ingles',
+        age: '17',
+        genero: 'genero',
+        other: '15',
+        about: 'Descripción de la tarjeta...'
+    },
+    {
+        img: 'https://phantom-marca.unidadeditorial.es/c1a52a6291d23f1024de759bc439ca28/resize/828/f/jpg/assets/multimedia/imagenes/2022/03/04/16464342523329.jpg',
+        name: 'Nombre Tarjeta',
+        category: 'ocupacional',
+        personName: 'Nombre Persona',
+        c1: 'ingles',
+        age: '17',
+        genero: 'genero',
+        other: '16',
+        about: 'Descripción de la tarjeta...'
+    },
+    {
+        img: 'https://depor.com/resizer/6XULpx88rz0Y2UFs_KNdRqcQZVM=/580x330/smart/filters:format(jpeg):quality(90)/cloudfront-us-east-1.images.arcpublishing.com/elcomercio/2OH45VRKWVCHZBLDNC4SSJGSAM.jpg',
+        name: 'Nombre Tarjeta',
+        category: 'traders',
+        personName: 'Nombre Persona',
+        c1: 'ingles',
+        age: '17',
+        genero: 'genero',
+        other: '17',
+        about: 'Descripción de la tarjeta...'
+    },
+    {
+        img: 'https://imagenes.eltiempo.com/files/image_1200_600/uploads/2024/07/19/669ad5c9acd48.png',
+        name: 'Nombre Tarjeta',
+        category: 'financiera',
+        personName: 'Nombre Persona',
+        c1: 'ingles',
+        age: '17',
+        genero: 'genero',
+        other: '18',
+        about: 'Descripción de la tarjeta...'
+    },
+    {
+        img: 'https://intn24.lalr.co/cms/2024/06/26161034/Neymar-Jr.-futbolista-brasileno-AFP.jpg?w=480',
+        name: 'Nombre Tarjeta',
+        category: 'financiera',
+        personName: 'Nombre Persona',
+        c1: 'ingles',
+        age: '17',
+        genero: 'genero',
+        other: '19',
+        about: 'Descripción de la tarjeta...'
+    },
+    {
+        img: 'https://www.semana.com/resizer/v2/VYOD76GSJNGCXCIP656IRXVJBQ.jpg?auth=e8bf7192682876eda47907309cd96ed64dee4bf4850ad9be4c4307b597131241&smart=true&quality=75&width=1280&height=720',
+        name: 'Nombre Tarjeta',
+        category: 'financiera',
+        personName: 'Nombre Persona',
+        c1: 'ingles',
+        age: '17',
+        genero: 'genero',
+        other: '20',
+        about: 'Descripción de la tarjeta...'
+    },
+    {
+        img: 'https://cdn.resfu.com/media/img_news/agencia-efe_multimedia_55010692278.multimedia.photos.55010692278003.file.jpg?size=1000x&lossy=1',
+        name: 'Nombre Tarjeta',
+        category: 'legal',
+        personName: 'Nombre Persona',
+        c1: 'ingles',
+        age: '17',
+        genero: 'genero',
+        other: '21',
+        about: 'Descripción de la tarjeta...'
+    },
+    {
+        img: 'https://cdn.resfu.com/media/img_news/agencia-efe_multimedia_55012046507.multimedia.photos.55012046507003.file.jpg?size=1000x&lossy=1',
+        name: 'Nombre Tarjeta',
+        category: 'legal',
+        personName: 'Nombre Persona',
+        c1: 'ingles',
+        age: '17',
+        genero: 'genero',
+        other: '22',
+        about: 'Descripción de la tarjeta...'
+    },
+    {
+        img: 'https://img.asmedia.epimg.net/resizer/v2/55EPYPO3GF4B4NJDE5XGQLOBDM.jpg?auth=4707c5ff450cc4acb431b0f867276a7f92420e9d2970630e6230003bc17a8372&width=644&height=362&focal=920%2C530',
+        name: 'Nombre Tarjeta',
+        category: 'legal',
+        personName: 'Nombre Persona',
+        c1: 'ingles',
+        age: '17',
+        genero: 'genero',
+        other: '23',
+        about: 'Descripción de la tarjeta...'
+    },
+    {
+        img: 'https://ghananewss.com/storage/2023/10/neymar-jr-SKIMS-mens-Ftr.jpg',
+        name: 'Nombre Tarjeta',
+        category: 'legal',
+        personName: 'Nombre Persona',
+        c1: 'ingles',
+        age: '17',
+        genero: 'genero',
+        other: '24',
+        about: 'Descripción de la tarjeta...'
+    },
+    {
+        img: 'https://www.ole.com.ar/images/2024/06/25/xII39scSo_720x0__1.jpg',
+        name: 'Nombre Tarjeta',
+        category: 'barberia',
+        personName: 'Nombre Persona',
+        c1: 'ingles',
+        age: '17',
+        genero: 'genero',
+        other: '25',
+        about: 'Descripción de la tarjeta...'
+    },
+    {
+        img: 'https://tmssl.akamaized.net/images/foto/galerie/neymar-jr-al-hilal-2023-1693996661-116041.jpg?lm=1693996705',
+        name: 'Nombre Tarjeta',
+        category: 'barberia',
+        personName: 'Nombre Persona',
+        c1: 'ingles',
+        age: '17',
+        genero: 'genero',
+        other: '26',
+        about: 'Descripción de la tarjeta...'
+    },
+    {
+        img: 'https://www.completesports.com/wp-content/uploads/2023/03/psg-___3026662525370348660_232024162___-.jpg?ezimgfmt=rs:379x474/rscb6/ngcb6/notWebP',
+        name: 'Nombre Tarjeta',
+        category: 'barberia',
+        personName: 'Nombre Persona',
+        c1: 'ingles',
+        age: '17',
+        genero: 'genero',
+        other: '27',
+        about: 'Descripción de la tarjeta...'
+    },
+    {
+        img: 'https://estaticos.elcolombiano.com/binrepository/849x565/18c0/780d565/none/11101/DAIG/neymar_45532629_20240708123310.jpg',
+        name: 'Nombre Tarjeta',
+        category: 'barberia',
+        personName: 'Nombre Persona',
+        c1: 'ingles',
+        age: '17',
+        genero: 'genero',
+        other: '28',
+        about: 'Descripción de la tarjeta...'
+    },
+    {
+        img: 'https://www.psg.fr/media/184662/neymar-jr.jpeg?anchor=center&mode=crop&width=800&height=450&quality=60',
+        name: 'Estadio',
+        category: 'cuidado',
+        personName: 'neymar jr',
+        c1: 'español',
+        age: '30',
+        genero: 'genero',
+        other: '29',
+        about: 'Un gran estadio de fútbol...'
+    },
+    {
+        img: 'https://img.redbull.com/images/c_crop,x_1914,y_0,h_3333,w_2000/c_fill,w_400,h_660/q_auto:low,f_auto/redbullcom/2021/2/5/xuyfzibqvdsmukwbkqxj/neymar-jr',
+        name: 'Estadio',
+        category: 'cuidado',
+        personName: 'neymar jr',
+        c1: 'español',
+        age: '30',
+        genero: 'genero',
+        other: '30',
+        about: 'Un gran estadio de fútbol...'
+    },
+    {
+        img: 'https://static.dw.com/image/65887442_803.jpg',
+        name: 'Estadio',
+        category: 'cuidado',
+        personName: 'neymar jr',
+        c1: 'español',
+        age: '30',
+        genero: 'genero',
+        other: '31',
+        about: 'Un gran estadio de fútbol...'
+    },
+    {
+        img: 'https://s1.elespanol.com/2024/07/20/corazon/celebrities/871923006_247934385_1024x576.jpg',
+        name: 'Estadio',
+        category: 'cuidado',
+        personName: 'neymar jr',
+        c1: 'español',
+        age: '30',
+        genero: 'genero',
+        other: '32',
+        about: 'Un gran estadio de fútbol...'
+    },
+    {
+        img: 'https://ichef.bbci.co.uk/ace/ws/660/cpsprodpb/13624/production/_97169397_gettyimages-627791424.jpg.webp',
+        name: 'Estadio',
+        category: 'cuidado',
+        personName: 'neymar jr',
+        c1: 'español',
+        age: '30',
+        genero: 'genero',
+        other: '33',
+        about: 'Un gran estadio de fútbol...'
+    },
+    {
+        img: 'https://estaticos.elcolombiano.com/binrepository/780x568/0c0/780d565/none/11101/XWES/neymar-3_45264466_20240604083725.jpg',
+        name: 'Pintura',
+        category: 'compositores',
+        personName: 'Pablo Picasso',
+        c1: 'francés',
+        age: '45',
+        genero: 'genero',
+        other: '34',
+        about: 'Una obra de arte moderna...'
+    },
+    {
+        img: 'https://depor.com/resizer/R8zCQ-H28zsx7j9PTlvJiTQcW2w=/580x330/smart/filters:format(jpeg):quality(90)/cloudfront-us-east-1.images.arcpublishing.com/elcomercio/AS5ZTB4T6FG55C64M4VFOJ536A.jpg',
+        name: 'Pintura',
+        category: 'compositores',
+        personName: 'Pablo Picasso',
+        c1: 'francés',
+        age: '45',
+        genero: 'genero',
+        other: '35',
+        about: 'Una obra de arte moderna...'
+    },
+    {
+        img: 'https://assets.goal.com/images/v3/blt9166be94c7ebcee0/NEEEY.jpg?auto=webp&format=pjpg&width=3840&quality=60',
+        name: 'Pintura',
+        category: 'compositores',
+        personName: 'Pablo Picasso',
+        c1: 'francés',
+        age: '45',
+        genero: 'genero',
+        other: '36',
+        about: 'Una obra de arte moderna...'
+    },
+    {
+        img: 'https://www.bloomberglinea.com/resizer/v2/ZTFACGSERVASZEGLLYBOERPAC4.jpg?auth=3cfc9b3edab25558f4a5f4be3d20a85a7a4301735b521fb6ff0227434a94822b&width=800&height=472&quality=80&smart=true',
+        name: 'Pintura',
+        category: 'compositores',
+        personName: 'Pablo Picasso',
+        c1: 'francés',
+        age: '45',
+        genero: 'genero',
+        other: '37',
+        about: 'Una obra de arte moderna...'
+    },
+    {
+        img: 'https://caracoltv.brightspotcdn.com/dims4/default/3a0d294/2147483647/strip/true/crop/1600x1164+0+0/resize/1000x728!/format/webp/quality/90/?url=http%3A%2F%2Fcaracol-brightspot.s3.us-west-2.amazonaws.com%2F3c%2Fb2%2Ff8fe96cb4bdeb4cbbae50853823f%2Fwhatsapp-image-2023-02-03-at-1.49.40%20PM.jpeg',
+        name: 'Pintura',
+        category: 'compositores',
+        personName: 'Pablo Picasso',
+        c1: 'francés',
+        age: '45',
+        genero: 'genero',
+        other: '38',
+        about: 'Una obra de arte moderna...'
+    },
+    {
+        img: 'https://fotografias.lasexta.com/clipping/cmsimages02/2022/04/27/2F66D5D1-46B7-4D58-A0D0-B4213A5F2565/neymar_60.jpg',
+        name: 'Laboratorio',
+        category: 'dj',
+        personName: 'Marie Curie',
+        c1: 'polaco',
+        age: '35',
+        genero: 'genero',
+        other: '39',
+        about: 'Un laboratorio de investigación...'
+    },
+    {
+        img: 'https://s.rfi.fr/media/display/862429d8-1089-11ea-aa28-005056a99247/w:980/p:16x9/2017-08-04t145600z_1752283116_rc155e450c00_rtrmadp_3_soccer-neymar.jpg',
+        name: 'Laboratorio',
+        category: 'dj',
+        personName: 'Marie Curie',
+        c1: 'polaco',
+        age: '35',
+        genero: 'genero',
+        other: '40',
+        about: 'Un laboratorio de investigación...'
+    },
+    {
+        img: 'https://elcomercio.pe/resizer/v2/ASQD6KSIKNGMLFL7PMLTJ3234M.jpg?auth=da4cb69b3f38448e14cdf6aeeafc6ea2ead7d6158f43bfee6d0c8beb1873329b&width=580&height=330&quality=75&smart=true',
+        name: 'Laboratorio',
+        category: 'dj',
+        personName: 'Marie Curie',
+        c1: 'polaco',
+        age: '35',
+        genero: 'genero',
+        other: '41',
+        about: 'Un laboratorio de investigación...'
+    },
+    {
+        img: 'https://tmssl.akamaized.net//images/foto/galerie/neymar-barcelona-1501315706-11319.jpg',
+        name: 'Laboratorio',
+        category: 'dj',
+        personName: 'Marie Curie',
+        c1: 'polaco',
+        age: '35',
+        genero: 'genero',
+        other: '42',
+        about: 'Un laboratorio de investigación...'
+    },
+    {
+        img: 'https://cdn.forbes.com.mx/2023/08/neymar_tres-640x360.webp',
+        name: 'Laboratorio',
+        category: 'dj',
+        personName: 'Marie Curie',
+        c1: 'polaco',
+        age: '43',
+        genero: 'genero',
+        other: '43',
+        about: 'Un laboratorio de investigación...'
+    },
+    {
+        img: 'https://www.psg.fr/media/242464/neymar.jpg?center=0.26158038147138962,0.51724137931034486&mode=crop&width=800&height=450&quality=60',
+        name: 'Nombre Tarjeta',
+        category: 'idiomas',
+        personName: 'Nombre Persona',
+        c1: 'ingles',
+        age: '17',
+        genero: 'genero',
+        other: '44',
+        about: 'Descripción de la tarjeta...'
+    },
+    {
+        img: 'https://www.fcbarcelonanoticias.com/uploads/s1/13/72/90/1/neymar-en-un-calentamiento-del-psg.jpeg',
+        name: 'Nombre Tarjeta',
+        category: 'idiomas',
+        personName: 'Nombre Persona',
+        c1: 'ingles',
+        age: '17',
+        genero: 'genero',
+        other: '45',
+        about: 'Descripción de la tarjeta...'
+    },
+    {
+        img: 'https://library.sportingnews.com/styles/crop_style_16_9_desktop/s3/2022-03/neymar%281%29.jpg?itok=Ua4tqp_j',
+        name: 'Nombre Tarjeta',
+        category: 'idiomas',
+        personName: 'Nombre Persona',
+        c1: 'ingles',
+        age: '17',
+        genero: 'genero',
+        other: '46',
+        about: 'Descripción de la tarjeta...'
+    },
+    {
+        img: 'https://caracoltv.brightspotcdn.com/dims4/default/1b679dc/2147483647/strip/true/crop/1024x683+0+0/resize/1000x667!/format/webp/quality/90/?url=http%3A%2F%2Fcaracol-brightspot.s3.us-west-2.amazonaws.com%2F0c%2F5c%2F8ed66b134d808b7a9102da8ceeb2%2Fgettyimages-1328064222.jpg',
+        name: 'Nombre Tarjeta',
+        category: 'idiomas',
+        personName: 'Nombre Persona',
+        c1: 'ingles',
+        age: '17',
+        genero: 'genero',
+        other: '47',
+        about: 'Descripción de la tarjeta...'
+    },
+    {
+        img: 'https://depor.com/resizer/v2/B2XHJXUCPBBH3IZZL2WLEMKREE.jpg?auth=636e693cb93b8820ed0092b669d74cb405e3210ca12658744d579064e663ea3c&width=580&height=330&quality=90&smart=true',
+        name: 'Nombre Tarjeta',
+        category: 'idiomas',
+        personName: 'Nombre Persona',
+        c1: 'ingles',
+        age: '17',
+        genero: 'genero',
+        other: '48',
+        about: 'Descripción de la tarjeta...'
+    },
+    {
+        img: 'https://www.futbolred.com/files/article_main/files/crop/uploads/2021/11/09/618afbf2826ca.r_1636562304371.0-83-1650-907.jpeg',
+        name: 'Nombre Tarjeta',
+        category: 'marketing',
+        personName: 'Nombre Persona',
+        c1: 'ingles',
+        age: '17',
+        genero: 'genero',
+        other: '49',
+        about: 'Descripción de la tarjeta...'
+    },
+    {
+        img: 'https://www.soyfutbol.com/img/2022/07/27/neymar_1.jpg?__scale=w:1200,h:1200,t:2',
+        name: 'Nombre Tarjeta',
+        category: 'marketing',
+        personName: 'Nombre Persona',
+        c1: 'ingles',
+        age: '17',
+        genero: 'genero',
+        other: '50',
+        about: 'Descripción de la tarjeta...'
+    },
+    {
+        img: 'https://e0.365dm.com/22/10/1600x900/skysports-neymar-psg-paris-saint-germain_5934831.jpg?20221018131103',
+        name: 'Nombre Tarjeta',
+        category: 'marketing',
+        personName: 'Nombre Persona',
+        c1: 'ingles',
+        age: '17',
+        genero: 'genero',
+        other: '51',
+        about: 'Descripción de la tarjeta...'
+    },
+    {
+        img: 'https://pbs.twimg.com/media/GO79qcUXIAACr4Z.jpg',
+        name: 'Nombre Tarjeta',
+        category: 'marketing',
+        personName: 'Nombre Persona',
+        c1: 'ingles',
+        age: '17',
+        genero: 'genero',
+        other: '52',
+        about: 'Descripción de la tarjeta...'
+    },
+    {
+        img: 'https://www.mundodeportivo.com/files/image_948_465/uploads/2019/08/02/60e702878a9cf.jpeg',
+        name: 'Nombre Tarjeta',
+        category: 'marketing',
+        personName: 'Nombre Persona',
+        c1: 'ingles',
+        age: '17',
+        genero: 'genero',
+        other: '53',
+        about: 'Descripción de la tarjeta...'
+    },
+    {
+        img: 'https://elcomercio-depor-prod.web.arc-cdn.net/resizer/v2/BW547Z7YAJFHJAWPLGFXEDVQSI.jpg?auth=23058bf4cd3380a2f43b9e32bc6d5757c71f998180d2fd3a3159d2c9f7ef5608&width=1200&height=1200&smart=true&quality=75',
+        name: 'Nombre Tarjeta',
+        category: 'mentorias',
+        personName: 'Nombre Persona',
+        c1: 'ingles',
+        age: '17',
+        genero: 'genero',
+        other: '54',
+        about: 'Descripción de la tarjeta...'
+    },
+    {
+        img: 'https://images.radio.com/aiu-media/GettyImages1401326829-90322f3f-9e8b-4c35-9068-07e8e3e2ec55.jpg?width=800',
+        name: 'Nombre Tarjeta',
+        category: 'mentorias',
+        personName: 'Nombre Persona',
+        c1: 'ingles',
+        age: '17',
+        genero: 'genero',
+        other: '55',
+        about: 'Descripción de la tarjeta...'
+    },
+    {
+        img: 'https://images.ctfassets.net/3mv54pzvptwz/5aYDMG3kTwOu6cTRQRTmnU/40c93fd91e872ec4fd48e5c9e7439601/0.88396100-1494949246.jpg',
+        name: 'Nombre Tarjeta',
+        category: 'mentorias',
+        personName: 'Nombre Persona',
+        c1: 'ingles',
+        age: '17',
+        genero: 'genero',
+        other: '56',
+        about: 'Descripción de la tarjeta...'
+    },
+    {
+        img: 'https://www.fcbarcelona.com/fcbarcelona/photo/2018/06/27/8f657fb4-54ff-4bf6-aac4-058ea529614f/ggtMJOPs.jpg',
+        name: 'Nombre Tarjeta',
+        category: 'mentorias',
+        personName: 'Nombre Persona',
+        c1: 'ingles',
+        age: '17',
+        genero: 'genero',
+        other: '57',
+        about: 'Descripción de la tarjeta...'
+    },
+    {
+        img: 'https://www.futbolred.com/files/image_800_600/uploads/2022/12/05/638eb2537694d.jpeg',
+        name: 'Nombre Tarjeta',
+        category: 'mentorias',
+        personName: 'Nombre Persona',
+        c1: 'ingles',
+        age: '17',
+        genero: 'genero',
+        other: '58',
+        about: 'Descripción de la tarjeta...'
+    },
+    {
+        img: 'https://www.lequipe.fr/_medias/img-photo-jpg/neymar-ne-portera-peut-etre-bientot-plus-le-maillot-parisien-p-lahalle-l-equipe/1500000001820159/0:0,1998:1998-828-828-75/da4c5.jpg',
+        name: 'Nombre Tarjeta',
+        category: 'moda',
+        personName: 'Nombre Persona',
+        c1: 'ingles',
+        age: '17',
+        genero: 'genero',
+        other: '59',
+        about: 'Descripción de la tarjeta...'
+    },
+    {
+        img: 'https://cadenaser.com/resizer/v2/JDDXTU33KNGBZDK2QADPE3VZLU.jpg?auth=0fa1c7c35b1e02379c2afadb6f690154b0fba2c47f619cca398a50304b7345c3&quality=70&width=1200&height=900&smart=true',
+        name: 'Nombre Tarjeta',
+        category: 'moda',
+        personName: 'Nombre Persona',
+        c1: 'ingles',
+        age: '17',
+        genero: 'genero',
+        other: '60',
+        about: 'Descripción de la tarjeta...'
+    },
+    {
+        img: 'https://www.psg.fr/media/242464/neymar.jpg?center=0.26158038147138962,0.51724137931034486&mode=crop&width=800&height=450&quality=60',
+        name: 'Nombre Tarjeta',
+        category: 'moda',
+        personName: 'Nombre Persona',
+        c1: 'ingles',
+        age: '17',
+        genero: 'genero',
+        other: '61',
+        about: 'Descripción de la tarjeta...'
+    },
+    {
+        img: 'https://okdiario.com/img/2022/06/26/ney-655x368.jpg',
+        name: 'Nombre Tarjeta',
+        category: 'moda',
+        personName: 'Nombre Persona',
+        c1: 'ingles',
+        age: '17',
+        genero: 'genero',
+        other: '62',
+        about: 'Descripción de la tarjeta...'
+    },
+    {
+        img: 'https://icdn.football-espana.net/wp-content/uploads/2022/03/Neymar-Junior3-1020x574.jpeg',
+        name: 'Nombre Tarjeta',
+        category: 'moda',
+        personName: 'Nombre Persona',
+        c1: 'ingles',
+        age: '17',
+        genero: 'genero',
+        other: '63',
+        about: 'Descripción de la tarjeta...'
+    },
+    {
+        img: 'https://www.tribunapr.com.br/wp-content/uploads/sites/1/2017/08/Neymar.jpg',
+        name: 'Nombre Tarjeta',
+        category: 'negocios',
+        personName: 'Nombre Persona',
+        c1: 'ingles',
+        age: '17',
+        genero: 'genero',
+        other: '64',
+        about: 'Descripción de la tarjeta...'
+    },
+    {
+        img: 'https://www.record.com.mx/sites/default/files/styles/v2-crop768x433/public/articulos/2024/03/29/guillermo_ochoa9.jpg?itok=592fzvVQ',
+        name: 'Nombre Tarjeta',
+        category: 'negocios',
+        personName: 'Nombre Persona',
+        c1: 'ingles',
+        age: '17',
+        genero: 'genero',
+        other: '65',
+        about: 'Descripción de la tarjeta...'
+    },
+    {
+        img: 'https://phantom-marca-us.unidadeditorial.es/bd636989724619a8d7d2a4b1eb5c3ce0/resize/828/f/jpg/assets/multimedia/imagenes/2022/12/02/16700118532768.jpg',
+        name: 'Nombre Tarjeta',
+        category: 'negocios',
+        personName: 'Nombre Persona',
+        c1: 'ingles',
+        age: '17',
+        genero: 'genero',
+        other: '66',
+        about: 'Descripción de la tarjeta...'
+    },
+    {
+        img: 'https://s1.elespanol.com/2020/01/26/actualidad/actualidad_462717173_143511100_1706x960.jpg',
+        name: 'Nombre Tarjeta',
+        category: 'negocios',
+        personName: 'Nombre Persona',
+        c1: 'ingles',
+        age: '17',
+        genero: 'genero',
+        other: '67',
+        about: 'Descripción de la tarjeta...'
+    },
+    {
+        img: 'https://fly.metropoles.cloud/upload/q_85,w_600/https://uploads.metropoles.cloud/wp-content/uploads/2023/06/09094016/Neymar-Barcelona-5.jpg',
+        name: 'Nombre Tarjeta',
+        category: 'negocios',
+        personName: 'Nombre Persona',
+        c1: 'ingles',
+        age: '17',
+        genero: 'genero',
+        other: '68',
+        about: 'Descripción de la tarjeta...'
+    },
+    {
+        img: 'https://depor.com/resizer/v2/HQLVPPLAD5A6JKV7YQQWL3XGEE.jpg?auth=301f9f303806f7de02d331a72268b09f0b85fea774d733a6e364596607300463&width=580&height=330&quality=90&smart=true',
+        name: 'Nombre Tarjeta',
+        category: 'ocupacional',
+        personName: 'Nombre Persona',
+        c1: 'ingles',
+        age: '17',
+        genero: 'genero',
+        other: '69',
+        about: 'Descripción de la tarjeta...'
+    },
+    {
+        img: 'https://www.fcbarcelonanoticias.com/uploads/s1/14/06/20/0/neymar-jr-jugador-del-al-hilal.jpeg',
+        name: 'Nombre Tarjeta',
+        category: 'ocupacional',
+        personName: 'Nombre Persona',
+        c1: 'ingles',
+        age: '17',
+        genero: 'genero',
+        other: '70',
+        about: 'Descripción de la tarjeta...'
+    },
+    {
+        img: 'https://www.fcbarcelonanoticias.com/uploads/s1/14/06/61/2/neymar-jr-en-el-gran-premio-de-bahrain-en-la-formula-1.png',
+        name: 'Nombre Tarjeta',
+        category: 'ocupacional',
+        personName: 'Nombre Persona',
+        c1: 'ingles',
+        age: '17',
+        genero: 'genero',
+        other: '71',
+        about: 'Descripción de la tarjeta...'
+    },
+    {
+        img: 'https://imagenes.elpais.com/resizer/v2/ACZOCFFKINCPHH2HQ7ZXUJ6Y3I.jpg?auth=b24d19237a4a65ada9831eb4fe3f5b7961a8753b1efc4e987dd7f6c52beb6fe1&width=1960&height=1103&smart=true',
+        name: 'Nombre Tarjeta',
+        category: 'ocupacional',
+        personName: 'Nombre Persona',
+        c1: 'ingles',
+        age: '17',
+        genero: 'genero',
+        other: '72',
+        about: 'Descripción de la tarjeta...'
+    },
+    {
+        img: 'https://economictimes.indiatimes.com/thumb/height-450,width-600,imgsize-41160,msid-102699296/neymar.jpg?from=mdr',
+        name: 'Nombre Tarjeta',
+        category: 'ocupacional',
+        personName: 'Nombre Persona',
+        c1: 'ingles',
+        age: '17',
+        genero: 'genero',
+        other: '73',
+        about: 'Descripción de la tarjeta...'
+    },
+    {
+        img: 'https://media.rpctv.com/p/06fac499250479175f14865de1bc4ac1/adjuntos/314/imagenes/018/646/0018646402/neymar-jrjpg.jpg',
+        name: 'Nombre Tarjeta',
+        category: 'traders',
+        personName: 'Nombre Persona',
+        c1: 'ingles',
+        age: '17',
+        genero: 'genero',
+        other: '17',
+        about: 'Descripción de la tarjeta...'
+    },
+    {
+        img: 'https://www.fcbarcelonanoticias.com/uploads/s1/22/38/21/neymar-223821.jpeg',
+        name: 'Nombre Tarjeta',
+        category: 'traders',
+        personName: 'Nombre Persona',
+        c1: 'ingles',
+        age: '17',
+        genero: 'genero',
+        other: '17',
+        about: 'Descripción de la tarjeta...'
+    },
+    {
+        img: 'https://www.futbolred.com/files/image_800_600/uploads/2023/02/20/63f3a62f734ef.jpeg',
+        name: 'Nombre Tarjeta',
+        category: 'traders',
+        personName: 'Nombre Persona',
+        c1: 'ingles',
+        age: '17',
+        genero: 'genero',
+        other: '17',
+        about: 'Descripción de la tarjeta...'
+    },
+    {
+        img: 'https://phantom-marca-us.unidadeditorial.es/b287e95cf453a9c4e6d6de4b0851ddfa/crop/156x0/990x556/resize/828/f/jpg/assets/multimedia/imagenes/2019/08/09/15653502826710.jpg',
+        name: 'Nombre Tarjeta',
+        category: 'traders',
+        personName: 'Nombre Persona',
+        c1: 'ingles',
+        age: '17',
+        genero: 'genero',
+        other: '17',
+        about: 'Descripción de la tarjeta...'
+    },
+    {
+        img: 'https://caracoltv.brightspotcdn.com/dims4/default/3329270/2147483647/strip/true/crop/1600x1066+0+0/resize/1000x666!/format/webp/quality/90/?url=http%3A%2F%2Fcaracol-brightspot.s3.us-west-2.amazonaws.com%2F62%2F3d%2Fbc927ffc4c7ea7db12f55789a488%2Fwhatsapp-image-2023-11-22-at-7.20.56%20AM.jpeg',
+        name: 'Nombre Tarjeta',
+        category: 'traders',
+        personName: 'Nombre Persona',
+        c1: 'ingles',
+        age: '17',
+        genero: 'genero',
+        other: '17',
+        about: 'Descripción de la tarjeta...'
+    },
+        ];
+
+        const cardGrid = document.querySelector('.card-grid');
+        const filterButtons = document.querySelectorAll('.filter-button');
+
+        let categoryCount = {};
+
+        function createCardElement(card, index) {
+    const div = document.createElement('div');
+    div.className = 'card fade-in';
+    div.setAttribute('data-category', card.category);
+    
+    if (!categoryCount[card.category]) {
+        categoryCount[card.category] = 0;
+    }
+    
+    categoryCount[card.category]++;
+    
+    const isHighlighted = categoryCount[card.category] <= 3;
+    div.innerHTML = `
+        <div class="card-container">
+            <div class="card-face front-face ${isHighlighted ? `highlighted ${card.category}` : ''}">
+                <div class="card-header">
+                    <h2>${card.name}</h2>
+                </div>
+                <div class="card-photo">
+                    <img src="${card.img}" alt="${card.name}">
+                </div>
+                <h3>${card.personName}</h3>
+                <div class="card-details">
+                    <p><span>C1:</span> ${card.c1}</p>
+                    <p><span>Edad:</span> ${card.age}</p>
+                    <p><span>Genero:</span> ${card.genero}</p>
+                    <p><span>Otro:</span> ${card.other}</p>
+                </div>
+            </div>
+            <div class="card-face back-face ${isHighlighted ? `highlighted ${card.category}` : ''}">
+                <div class="container-about">
+                    <h2>About:</h2>
+                    <p>${card.about}</p>
+                    <div class="row">
+                        <a href="#" target="_blank"><i class="bi fb bi-facebook"></i></a>
+                        <a href="#" target="_blank"><i class="bi ig bi-instagram"></i></a>
+                        <a href="#" target="_blank"><i class="bi git bi-github"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
+    return div;
+}
+
+function filterCards(category) {
+    const currentCards = cardGrid.querySelectorAll('.card');
+    
+    currentCards.forEach(card => {
+        card.classList.remove('fade-in');
+        card.classList.add('fade-out');
+    });
+
+    setTimeout(() => {
+        cardGrid.innerHTML = '';
+        const filteredCards = cards.filter(card => card.category === category);
+        
+        // Resetear el contador de categorías
+        categoryCount = {};
+        
+        filteredCards.forEach((card, index) => {
+            const cardElement = createCardElement(card);
+            cardGrid.appendChild(cardElement);
+            
+            void cardElement.offsetWidth;
+            
+            cardElement.classList.add('fade-in');
+        });
+    }, 500);
+}
+
+// Función para inicializar la página
+function initializePage() {
+    // Establece "Asesoría Financiera" como categoría inicial
+    const initialCategory = 'financiera';
+    
+    // Encuentra el botón de Asesoría Financiera y márquelo como activo
+    const financieraButton = document.querySelector('.filter-button[data-filter="financiera"]');
+    if (financieraButton) {
+        financieraButton.classList.add('active');
+    }
+    
+    // Filtra las tarjetas para mostrar solo Asesoría Financiera
+    filterCards(initialCategory);
+}
+
+// Event listeners para los botones de filtro
+filterButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        filterButtons.forEach(btn => btn.classList.remove('active'));
+        button.classList.add('active');
+        filterCards(button.getAttribute('data-filter'));
+    });
+});
+
+// Llama a la función de inicialización cuando se carga la página
+document.addEventListener('DOMContentLoaded', initializePage);
+
+// Fin del script
+    </script>
+     <script>
+
+        // Código JavaScript anterior para las tarjetas y filtros
+
+        // Nuevo código para la galería superior
+        const galleryCards = document.querySelectorAll('.gallery-card');
+        const leftButton = document.querySelector('.nav-button.left');
+        const rightButton = document.querySelector('.nav-button.right');
+
+        galleryCards.forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                
+                const deltaX = (x - centerX) / centerX;
+                const deltaY = (y - centerY) / centerY;
+                
+                card.style.transform = `rotateY(${deltaX * 10}deg) rotateX(${-deltaY * 10}deg)`;
+                
+                const content = card.querySelector('.gallery-card-content');
+                content.style.transform = `translateZ(50px) rotateY(${deltaX * 5}deg) rotateX(${-deltaY * 5}deg)`;
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = '';
+                const content = card.querySelector('.gallery-card-content');
+                content.style.transform = '';
+            });
+        });
+
+        leftButton.addEventListener('click', () => {
+            const last = galleryCards[galleryCards.length - 1];
+            last.remove();
+            document.querySelector('.gallery').insertBefore(last, galleryCards[0]);
+        });
+
+        rightButton.addEventListener('click', () => {
+            const first = galleryCards[0];
+            first.remove();
+            document.querySelector('.gallery').appendChild(first);
+        });
+
+        // Resto del código JavaScript anterior...
+    </script>
+    
+</body>
+</html>

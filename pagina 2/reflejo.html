@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News Dashboard</title>
+    <style>
+        @font-face {
+            font-family: hyperwave;
+            src: url(font/Hyperwave.otf);
+        }
+        @font-face {
+            font-family: edo;
+            src: url(font/edo.ttf);
+        }
+        @font-face {
+            font-family: onthel;
+            src: url(font/ONTHEL\ Demo.otf);
+        }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .page-title {
+            font-family: 'hyperwave', sans-serif;
+            text-align: left;
+            font-size: 175px;
+            font-weight: normal;
+            margin: 50px auto;
+            position: relative;
+            z-index: 2;
+            line-height: 0.9;
+            max-width: 55%;
+        }
+        .page-title .top-text {
+            display: block;
+            text-align: left;
+        }
+        .page-title .bottom-text {
+            display: block;
+            text-align: right;
+            margin-top: -20px;
+            line-height: 0.6;
+        }
+       
+        .page-title::after {
+            content: '';
+            position: absolute;
+            top: 32%;
+            left: -10%;
+            width: 120%;
+            height: 7px;
+            background-color: #4DD0E1;
+            transform: translateY(-50%) rotate(-5deg);
+            z-index: -1;
+        }
+
+        .news-background {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 60vh;
+            background-color: #e0e0e0;
+            border-radius: 0;
+            z-index: 0;
+            transform-origin: bottom;
+        }
+        
+        .news-section {
+            position: relative;
+            margin-top: 160px;
+            padding-bottom: 400px;
+            perspective: 1000px;
+        }
+        .news-cards {
+            display: flex;
+            gap: 80px;
+            margin-top: 40px;
+            justify-content: center;
+            position: relative;
+            z-index: 1;
+        }
+        .card-container {
+            position: relative;
+            transform-style: preserve-3d;
+            transform: translateZ(50px);
+            cursor: pointer;
+        }
+        .card-reflection {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            transform: scaleY(-1);
+            opacity: 0.5;
+            filter: blur(2px);
+            overflow: hidden;
+        }
+
+        .card {
+            width: 200px;
+            height: 400px;
+            flex: 1;
+            border-radius: 10px;
+            padding: 20px;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            position: relative;
+            overflow: visible;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+        }
+        .card::after {
+            content: '';
+            position: absolute;
+            bottom: -400px;
+            left: 0;
+            width: 100%;
+            height: 400px;
+            background: inherit;
+            transform: scaleY(-1);
+            opacity: 0.5;
+            filter: blur(2px);
+            z-index: 0;
+        }
+        .card-container:nth-child(1) .card {
+            background-image: url(img/fondocar6.jpeg);
+        }
+        .card-container:nth-child(2) .card {
+            background-image: url(img/fondocar4.jpeg);
+        }
+        .card-container:nth-child(3) .card {
+            background-image: url(img/fondocar7.jpeg);
+        }
+        .card-image {
+            position: absolute;
+            top: -40px;
+            left: 90px;
+            width: 100%;
+            height: calc(100% + 50px);
+            overflow: hidden;
+        }
+        .card-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: inherit;
+            opacity: 0.7;
+        }
+        .card-image img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 10%;
+            height: 10%;
+            object-fit: cover;
+            opacity: 0.7;
+            object-position: center top;
+        }
+       
+        .card-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 83.5%;
+            padding: 20px;
+            font-family: onthel;
+            color: white;
+        }
+        .card-content .h3-c{
+            font-size: 75px;
+            transform: rotate(90deg);
+            margin-bottom: -29%;
+            margin-left: -79%;
+        }
+        .card-content .h3-c1{
+            font-size: 75px;
+            transform: rotate(90deg);
+            margin-bottom: 30%;
+            margin-left: -79%;
+        }
+        .card-content .h3-c2{
+            font-size: 75px;
+            transform: rotate(90deg);
+            margin-bottom: 80%;
+            margin-left: -79%;
+        }
+        
+        .background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url(img/fondohor1.jpeg);
+            background-size: cover;
+            background-position: center;
+            opacity: 0.2;
+            z-index: -1;
+        }
+        .chair-image {
+            position: absolute;
+            bottom: 170px;
+            right: 100px;
+            width: 400px;
+            height: auto;
+            z-index: 2;
+        }
+    </style>
+</head>
+<body>
+    <div class="background"></div>
+    <div class="container">
+        <main>
+            <h1 class="page-title">
+                <span class="top-text">PLANES </span>
+                <span class="bottom-text">BOOST <br> CAPITAL</span>
+            </h1>
+            <div class="news-section">
+                <div class="news-background"></div>
+                <div class="news-cards">
+                    <div class="card-container" onclick="redirectTo('ctl1.html')">
+                        <div class="card">
+                            <img src="img/a9025219-1131-4941-9995-9180b8f6eb60.png" alt="Person in blue hoodie" class="card-image">
+                            <div class="card-content">
+                                <h3 class="h3-c">PRO</h3>
+                            </div>
+                        </div>
+                        <div class="card-reflection">
+                            <img src="img/a9025219-1131-4941-9995-9180b8f6eb60.png" alt="Person in blue hoodie" class="card-image">
+                            <div class="card-content">
+                                <h3 class="h3-c">PRO</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-container" onclick="redirectTo('ctl2.html')">
+                        <div class="card">
+                            <img src="img/0029b7b6-7421-4939-8594-59a553b71cc5.png" alt="Person in green hoodie" class="card-image">
+                            <div class="card-content">
+                                <h3 class="h3-c1">PLUS</h3>
+                            </div>
+                        </div>
+                        <div class="card-reflection">
+                            <img src="img/0029b7b6-7421-4939-8594-59a553b71cc5.png" alt="Person in green hoodie" class="card-image">
+                            <div class="card-content">
+                                <h3 class="h3-c1">PLUS</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-container" onclick="redirectTo('ctl3.html')">
+                        <div class="card">
+                            <img src="img/3d31ce22-3bd0-4247-8de0-81045fef44ef.png" alt="Person in red hoodie" class="card-image">
+                            <div class="card-content">
+                                <h3 class="h3-c2">PRIME</h3>
+                            </div>
+                        </div>
+                        <div class="card-reflection">
+                            <img src="img/3d31ce22-3bd0-4247-8de0-81045fef44ef.png" alt="Person in red hoodie" class="card-image">
+                            <div class="card-content">
+                                <h3 class="h3-c2">PRIME</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <img src="image/logoblancosombra.png" alt="Black chair" class="chair-image">
+                <div class="logo-shadow"></div>
+            </div>
+        </main>
+    </div>
+    
+
+    <script>
+        function redirectTo(url) {
+            window.location.href = url;
+        }
+    </script>
+</body>
+</html>

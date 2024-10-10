@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disney Characters</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f0f0f0;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .search-bar {
+            padding: 10px;
+            border-radius: 20px;
+            border: none;
+            background-color: #f0f0f0;
+            width: 200px;
+        }
+        .menu-icon {
+            font-size: 24px;
+        }
+        .character-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        .character-card {
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            overflow: hidden;
+            text-align: center;
+            box-shadow: 0 0 5px rgba(0,0,0,0.1);
+        }
+        .character-image {
+            width: 100%;
+            height: 200px;
+            object-fit: contain;
+            background-color: #fff;
+        }
+        .character-info {
+            padding: 10px;
+        }
+        .character-name {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .character-movie {
+            font-size: 14px;
+            color: #666;
+        }
+        .footer {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+        }
+        .social-links a {
+            margin-right: 10px;
+            color: #666;
+            text-decoration: none;
+        }
+        .navigation {
+            display: flex;
+            gap: 10px;
+        }
+        .nav-button {
+            padding: 5px 10px;
+            background-color: #f0f0f0;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">Disney Characters</div>
+            <input type="text" class="search-bar" placeholder="Search characters...">
+            <div class="menu-icon">☰</div>
+        </div>
+        <div class="character-grid">
+            <div class="character-card">
+                <img src="img/ctl1.png" alt="Rosetta" class="character-image">
+                <div class="character-info">
+                    <div class="character-name">Rosetta</div>
+                    <div class="character-movie">Movie: Tinkerbell</div>
+                </div>
+            </div>
+            <div class="character-card">
+                <img src="/api/placeholder/200/200" alt="Sadness" class="character-image">
+                <div class="character-info">
+                    <div class="character-name">Sadness</div>
+                    <div class="character-movie">Movie: Inside Out</div>
+                </div>
+            </div>
+            <div class="character-card">
+                <img src="/api/placeholder/200/200" alt="Disgust" class="character-image">
+                <div class="character-info">
+                    <div class="character-name">Disgust</div>
+                    <div class="character-movie">Movie: Inside Out</div>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <div class="social-links">
+                <a href="#">Facebook</a>
+                <a href="#">Twitter</a>
+            </div>
+            <div class="navigation">
+                <button class="nav-button">< Prev</button>
+                <button class="nav-button">Next ></button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

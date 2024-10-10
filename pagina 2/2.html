@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boost Capital - Pie de Página</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Animaciones generales */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes logoRotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+      html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: Arial, sans-serif;
+            color: #ffffff;
+            background: linear-gradient(to bottom, #A9A9A9, #2F2F2F);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+        }
+
+        .header-fin {
+            text-align: center;
+            position: relative;
+            width: 100%;
+        }
+        .header-fin .h1-fin {
+            font-size: 112px;
+            color: rgba(255, 255, 255, 0.1);
+            margin: 0;
+            position: absolute; /* Posiciona el título de manera absoluta */
+            top: 100%; /* Mueve el título 50% hacia abajo desde la parte superior del contenedor */
+            left: 50%; /* Mueve el título 50% hacia la derecha desde la parte izquierda del contenedor */
+            transform: translate(-50%, -90%); /* Centra el título perfectamente */
+            animation: fadeIn 2s ease-in-out; /* Animación de aparición */
+        }
+        .logo-fin {
+            position: absolute;
+            top: 40%; /* Ajusta esta línea para mover el logo hacia arriba o abajo */
+            left: 51%; /* Centra el logo horizontalmente */
+            transform: translate(-50%, -41.6%); /* Centra el logo */
+            font-size: 60px;
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            animation: fadeIn 3s ease-in-out; /* Animación de aparición */
+            transition: transform 0.5s ease; /* Transición para la animación de giro */
+        }
+        .logo-fin:hover {
+            transform: translate(-50%, -41.6%) rotate(360deg); /* Giro al pasar el mouse */
+        }
+        .logo-fin .img-fin {
+            width: 300px;
+            height: auto;
+        }
+        .content-fin {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            max-width: 1200px;
+            padding: 20px 50px;
+            box-sizing: border-box; /* Asegura que el padding no cause desbordamiento */
+            animation: fadeIn 2s ease-in-out; /* Animación de aparición */
+        }
+        .quick-access-fin, .contacts-fin, .social-media-fin {
+            display: flex;
+            flex-direction: column;
+            animation: fadeIn 2.5s ease-in-out; /* Animación de aparición */
+        }
+        .contacts-fin {
+            position: relative;
+            top: 100px; /* Ajusta este valor según necesites */
+            animation: fadeIn 2.8s ease-in-out; /* Animación de aparición */
+        }
+        .quick-access-fin .h3-fin, .contacts-fin .h3-fin, .social-media-fin .h3-fin {
+            color: #A9A9A9;
+            margin-bottom: 10px;
+        }
+        .quick-access-fin .a-fin, .social-media-fin .a-fin {
+            color: #D3D3D3;
+            text-decoration: none;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center; /* Centra verticalmente el texto con el icono */
+            transition: transform 0.3s ease; /* Transición suave para la animación */
+        }
+        .quick-access-fin .a-fin:hover, .social-media-fin .a-fin:hover {
+            transform: scale(1.1); /* Escala los enlaces al pasar el mouse */
+        }
+        .contacts-fin .p-fin {
+            margin: 5px 0;
+            color: #D3D3D3;
+            display: flex;
+            align-items: center; /* Centra verticalmente el texto con el icono */
+        }
+        .contacts-fin .p-fin .i-fin, .quick-access-fin .a-fin .i-fin, .social-media-fin .a-fin .i-fin {
+            margin-right: 10px;
+            color: #D3D3D3;
+        }
+        footer {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: Arial, sans-serif;
+            color: #ffffff;
+            background: linear-gradient(to bottom, #A9A9A9, #2F2F2F);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            overflow-x: hidden; /* Evita la barra de desplazamiento horizontal */
+            animation: fadeIn 2s ease-in-out; /* Animación de aparición */
+        }
+        .name-fin{
+            text-align: center;
+            padding-top: 20px;
+            color: #A9A9A9;
+            width: 100%;
+            animation: fadeIn 3s ease-in-out; /* Animación de aparición */
+        }
+        .name .p-fin{
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="footer">
+            <div class="container-fin">
+                <div class="header-fin">
+                    <h1 class="h1-fin">BOOST CAPITAL</h1>
+                    <div class="logo-fin">
+                        <img class="img-fin" src="image/logoblanco.png" alt="Logo">
+                    </div>
+                </div>
+                <div class="content-fin">
+                    <div class="quick-access-fin">
+                        <h3 class="h3-fin">ACCESOS RÁPIDOS</h3>
+                        <a class="a-fin" href="#"><i class="i-fin fas fa-home"></i>INICIO</a>
+                        <a class="a-fin" href="#"><i class="i-fin fas fa-project-diagram"></i>PROYECTOS</a>
+                        <a class="a-fin" href="#"><i class="i-fin fas fa-file-alt"></i>PLANES</a>
+                        <a class="a-fin" href="#"><i class="i-fin fas fa-users"></i>EQUIPO</a>
+                        <a class="a-fin" href="#"><i class="i-fin fas fa-headset"></i>SOPORTE</a>
+                        <a class="a-fin" href="#"><i class="i-fin fas fa-ellipsis-h"></i>OTRA</a>
+                    </div>
+                    <div class="contacts-fin">
+                        <h3 class="h3-fin">CONTACTOS</h3>
+                        <p class="p-fin"><i class="i-fin fas fa-phone-alt"></i>+57 (321)-123-1234</p>
+                        <p class="p-fin"><i class="i-fin fas fa-envelope"></i>EJEMPLO@CORREO.COM</p>
+                        <p class="p-fin"><i class="i-fin fas fa-map-marker-alt"></i>CRA 1 # 2-3 CENTRO</p>
+                    </div>
+                    <div class="social-media-fin">
+                        <h3 class="h3-fin">REDES SOCIALES</h3>
+                        <a class="a-fin" href="#"><i class="i-fin fab fa-facebook-f"></i>Facebook</a>
+                        <a class="a-fin" href="#"><i class="i-fin fab fa-instagram"></i>Instagram</a>
+                        <a class="a-fin" href="#"><i class="i-fin fab fa-twitter"></i>Twitter</a>
+                        <a class="a-fin" href="#"><i class="i-fin fab fa-youtube"></i>YouTube</a>
+                    </div>
+                </div>
+                <div class="name-fin">
+                    <p class="p-fin">ALEJANDRO ROSERO @ 2024</p>
+                </div>
+            </div>
+    </div>
+    
+    
+</body>
+</html>

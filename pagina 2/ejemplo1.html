@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boost Capital</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+@font-face {
+    font-family: league;
+    src: url(font/LeagueSpartan-SemiBold.ttf);
+}
+@font-face {
+    font-family: aleo;
+    src: url(font/Aleo-ExtraLightItalic.ttf);
+}
+body, html {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            color: white;
+            box-sizing: border-box;
+            overflow-x: hidden;
+            justify-content: flex-end;
+            flex-direction: column;
+            display: flex;
+            background-color: #A9A9A9;
+        }
+
+.hero-in {
+    position: relative;
+    
+    height: 100vh;
+    background-size: 110%;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    animation: fadeIn 2s ease-in-out;
+    animation: zoomOut 5s ease-in-out forwards;
+    overflow: hidden;
+
+}
+#myVideo {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: 1;
+    object-fit: contain; /* Cambiado de 'cover' a 'contain' */
+    top: 50%; /* Añadido */
+    left: 50%; /* Añadido */
+    transform: translate(-50%, -50%); /* Añadido */
+    background-color: red; /* Añadido para mantener el fondo rojo */
+}
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 35.6%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px); /* Efecto de desenfoque */
+    z-index: 1;
+}
+
+.content-in {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    padding: 20px;
+}
+
+/* Logo */
+.logo-in .img-in {
+    max-width: 100%;
+    height: auto;
+    max-height: 80px; /* Ajusta esto para cambiar el tamaño del logo */
+}
+
+/* Estilos de la navegación */
+.navigation {
+    position: absolute;
+    top: 30px;
+    right: -600px;
+    z-index: 3;
+    animation: slideIn 1.5s ease-out forwards;
+}
+
+.navigation .ul-in {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    margin: 0;
+    padding: 0;
+}
+
+.navigation .ul-in .li-in .a-in {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    position: relative;
+}
+.navigation .ul-in .li-in .a-in::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: white;
+    bottom: -5px;
+    left: 0;
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    transition: transform 0.3s ease-out;
+}
+
+.navigation .ul-in .li-in .a-in:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+.main-text {
+    max-width: 600px;
+}
+
+.main-text .h2-in {
+    margin: 0;
+    font-size: 14px;
+    text-transform: uppercase;
+    margin-bottom: -9px;
+    padding-left: 37.5%;
+}
+
+/* Título con texto transparente y blanco */
+.main-text .h1-in {
+    font-size: 90px;
+    margin: 0;
+    line-height: 1.1;
+    display: flex;
+    flex-wrap: wrap;
+
+}
+.pos-h1{
+    padding-left: 49.5%;
+}
+.pos-h2{
+    padding-left: 6.72%;
+}
+
+.main-text .h1-in .transparent-text {
+    color: transparent;
+    -webkit-text-stroke: 1px transparent; /* Borde blanco */
+    background-image: url(img/imgfondo3.jpg); /* Imagen de fondo dentro del texto */
+    background-clip: text;
+    -webkit-background-clip: text;
+    background-size: cover;
+}
+
+.main-text .h1-in .green-text {
+    color: white;
+}
+.main-text .h1-in .transparent-text, .main-text .h1-in .green-text {
+    opacity: 0;
+    animation: textFadeIn 2s ease-in forwards;
+}
+
+.main-text .h1-in .transparent-text {
+    animation-delay: 1s;
+}
+
+
+/* Otros estilos */
+.main-text .p-in {
+    margin: 20px 0;
+    font-size: 18px;
+}
+
+.learn-more {
+    display: inline-block;
+    padding: 10px 20px;
+    background: #00FF00;
+    color: black;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-weight: bold;
+    animation: pulse 2s infinite;
+}
+
+
+
+.slider-dot {
+    width: 12px;
+    height: 12px;
+    background: white;
+    border-radius: 50%;
+    margin: 5px 0;
+    opacity: 0.5;
+}
+
+.slider-dot.active {
+    opacity: 1;
+}
+
+
+
+.arrow {
+    font-size: 24px;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.arrow:hover {
+    background: rgba(0, 0, 0, 0.8);
+}
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+@keyframes slideIn {
+    to {
+        right: -570px;
+    }
+}
+@keyframes textFadeIn {
+    to {
+        opacity: 1;
+    }
+}
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+@keyframes zoomOut {
+    to {
+        background-size: 100%;
+    }
+}
+/*----------------------medio-------------------------------*/
+.bodi-med {
+            font-family: 'Roboto', sans-serif;
+            color: #FFFFFF;
+            background-size: cover;
+            display: flex;
+            overflow: hidden;
+            transition: background 0.5s ease;
+            background-image: url('img/fon1.jpg_large'); /* Fondo inicial */
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        .sidebar-left {
+            width: 20vw;
+            height: 100vh;
+            background-image: url('img/sidebar-bg.jpg'); /* Imagen de fondo en la barra lateral */
+            backdrop-filter: blur(10px);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            position: relative;
+            animation: slideInLeft 0.7s ease-in-out;
+        }
+
+        .sidebar-left .ul-med {
+            list-style: none;
+        }
+
+        .sidebar-left .ul-med .li-med {
+            margin: 20px 0;
+            cursor: pointer;
+            background-size: cover;
+            background-position: center;
+            height: 15vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            font-weight: bold;
+            text-transform: uppercase;
+            position: relative;
+            transition: all 0.3s ease;
+            transform: translateX(-100px);
+            animation: slideInLeft 0.5s ease forwards;
+            animation-delay: calc(0.2s * var(--i));
+        }
+        /* Estilo especial para el elemento activo */
+        .sidebar-left .ul-med .li-med.active {
+            border: 2px solid #fff; /* Borde blanco para resaltar */
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.7); /* Efecto de iluminación */
+            transform: scale(1.05); /* Un ligero aumento de tamaño */
+        }
+
+        .sidebar-left .ul-med .li-med.capitan-america {
+            background-image: url(img/fonside1.jpg);
+        }
+
+        .sidebar-left .ul-med .li-med.iron-man {
+            background-image: url(img/fonside2.jpg);
+        }
+
+        .sidebar-left .ul-med .li-med.thor {
+            background-image: url(img/fonside3.jpg);
+        }
+
+        .sidebar-left .ul-med .li-med.doctor-strange {
+            background-image: url(img/fonside4.jpg);
+        }
+
+        .sidebar-left .ul-med .li-med.black-widow {
+            background-image: url(img/fonside5.jpg);
+        }
+
+        .scroll-indicator {
+            writing-mode: vertical-rl;
+            text-align: center;
+            transform: rotate(180deg);
+            font-size: 14px;
+            color: #9a9abb;
+        }
+
+        .main-med {
+            flex: 1;
+            padding: 100px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        /* Estilos específicos para cada personaje */
+        .hero {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            display: none; /* Ocultar inicialmente */
+            padding: 20px;
+            opacity: 0;
+            transform: scale(0.9);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .hero.active {
+            display: block; /* Mostrar solo el personaje seleccionado */
+            animation: fadeInUp 0.5s ease forwards;
+        }
+
+        /* Ejemplo de estilo específico para Capitán América */
+        .hero.capitan-america .h1-med {
+            font-size: 56px;
+            color: #cdcdcd;
+            position: absolute;
+            top: 28%;
+            left: 10%;
+            font-family: league;
+            animation: fadeInLeft 1s ease-in-out;
+        }
+
+        .hero.capitan-america .img-med {
+            width: 380px;
+            position: absolute;
+            right: 10%;
+            top: 12%;
+            animation: fadeInRight 1s ease-in-out;
+        }
+
+        .hero.capitan-america .p-med {
+            position: absolute;
+            bottom: 10%;
+            left: 10%;
+            max-width: 500px;
+            font-size: 16px;
+            color: #ffffff;
+            font-family: aleo;
+            font-weight: bold;
+            animation: fadeInUp 1s ease-in-out;
+        }
+
+        /* Ejemplo de estilo específico para Iron Man */
+        .hero.iron-man .h1-med {
+            font-size: 50px;
+            color: #000000;
+            position: absolute;
+            top: 15%;
+            left: 5%;
+            font-family: league;
+            animation: fadeInLeft 1s ease-in-out;
+        }
+
+        .hero.iron-man .img-med {
+            width: 450px;
+            position: absolute;
+            right: 5%;
+            top: 5%;
+            animation: fadeInRight 1s ease-in-out;
+        }
+
+        .hero.iron-man .p-med {
+            position: absolute;
+            bottom: 25%;
+            left: 5%;
+            max-width: 600px;
+            font-size: 18px;
+            color: #000000;
+            font-family: aleo;
+            font-weight: bolder;
+            animation: fadeInUp 1s ease-in-out;
+        }
+
+        /* Ejemplo de estilo específico para Thor */
+        .hero.thor .h1-med {
+            font-size: 50px;
+            color: #000000;
+            position: absolute;
+            top: 15%;
+            left: 5%;
+            font-family: league;
+            animation: fadeInLeft 1s ease-in-out;
+        }
+
+        .hero.thor .img-med {
+            width: 380px;
+            position: absolute;
+            right: 10%;
+            top: 12%;
+            animation: fadeInRight 1s ease-in-out;
+        }
+
+        .hero.thor .p-med {
+            position: absolute;
+            bottom: 10%;
+            left: 5%;
+            max-width: 600px;
+            font-size: 18px;
+            color: #000000;
+            font-family: aleo;
+            font-weight: bolder;
+            animation: fadeInUp 1s ease-in-out;
+        }
+
+        /* Ejemplo de estilo específico para Doctor Strange */
+        .hero.doctor-strange .h1-med {
+            font-size: 50px;
+            color: #000000;
+            position: absolute;
+            top: 15%;
+            left: 5%;
+            font-family: league;
+            animation: fadeInLeft 1s ease-in-out;
+        }
+
+        .hero.doctor-strange .img-med {
+            width: 450px;
+            position: absolute;
+            right: 5%;
+            top: 5%;
+            animation: fadeInRight 1s ease-in-out;
+        }
+
+        .hero.doctor-strange .p-med {
+            position: absolute;
+            bottom: 25%;
+            left: 5%;
+            max-width: 600px;
+            font-size: 18px;
+            color: #ffffff;
+            font-family: aleo;
+            font-weight: bolder;
+            animation: fadeInUp 1s ease-in-out;
+        }
+
+        /* Ejemplo de estilo específico para Black Widow */
+        .hero.black-widow .h1-med {
+            font-size: 50px;
+            color: #000000;
+            position: absolute;
+            top: 15%;
+            left: 5%;
+            font-family: league;
+            animation: fadeInLeft 1s ease-in-out;
+        }
+
+        .hero.black-widow .img-med {
+            width: 450px;
+            position: absolute;
+            right: 5%;
+            top: 5%;
+            animation: fadeInRight 1s ease-in-out;
+        }
+
+        .hero.black-widow .p-med {
+            position: absolute;
+            bottom: 25%;
+            left: 5%;
+            max-width: 600px;
+            font-size: 18px;
+            color: #000000;
+            font-family: aleo;
+            font-weight: bolder;
+            animation: fadeInUp 1s ease-in-out;
+        }
+        /* Keyframes para las animaciones */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                transform: translateX(-100px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+/*----------------------fin---------------------------*/ 
+
+/* Animaciones generales */
+@keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes logoRotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+/* Nuevos estilos para el pie de página */
+.footer {
+            width: 100%;
+            background: linear-gradient(to bottom, #A9A9A9, #2F2F2F);
+            color: #ffffff;
+            padding: 50px 0;
+            margin-top: 50px;
+        }
+
+        .container-fin {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .header-fin {
+            text-align: center;
+            position: relative;
+            margin-bottom: 130px;
+        }
+
+        .header-fin .h1-fin {
+            font-size: 112px;
+            color: rgba(255, 255, 255, 0.1);
+            margin: 0;
+            position: absolute; /* Posiciona el título de manera absoluta */
+            top: 100%; /* Mueve el título 50% hacia abajo desde la parte superior del contenedor */
+            left: 50%; /* Mueve el título 50% hacia la derecha desde la parte izquierda del contenedor */
+            transform: translate(-50%, -47%); /* Centra el título perfectamente */
+            animation: fadeIn 2s ease-in-out; /* Animación de aparición */
+        }
+
+        .logo-fin {
+            position: absolute;
+            top: 40%; /* Ajusta esta línea para mover el logo hacia arriba o abajo */
+            left: 51%; /* Centra el logo horizontalmente */
+            transform: translate(-50%, -3.9%); /* Centra el logo */
+            font-size: 60px;
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            animation: fadeIn 3s ease-in-out; /* Animación de aparición */
+            transition: transform 0.5s ease; /* Transición para la animación de giro */
+        }
+        .logo-fin:hover {
+            transform: translate(-50%, -3.9%) rotate(360deg); /* Giro al pasar el mouse */
+        }
+        .logo-fin .img-fin {
+            width: 300px;
+            height: auto;
+        }
+
+        .content-fin {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            max-width: 1200px;
+            padding: 150px 10px;
+            box-sizing: border-box; /* Asegura que el padding no cause desbordamiento */
+            animation: fadeIn 2s ease-in-out; /* Animación de aparición */
+        }
+        
+
+        .quick-access-fin, .contacts-fin, .social-media-fin {
+            display: flex;
+            flex-direction: column;
+            animation: fadeIn 2.5s ease-in-out; /* Animación de aparición */
+        }
+        .contacts-fin {
+            position: relative;
+            top: 100px; /* Ajusta este valor según necesites */
+            animation: fadeIn 2.8s ease-in-out; /* Animación de aparición */
+        }
+        .quick-access-fin .h3-fin, .contacts-fin .h3-fin, .social-media-fin .h3-fin {
+            color: #A9A9A9;
+            margin-bottom: 15px;
+        }
+        .quick-access-fin .a-fin, .social-media-fin .a-fin {
+            color: #D3D3D3;
+            text-decoration: none;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center; /* Centra verticalmente el texto con el icono */
+            transition: transform 0.3s ease; /* Transición suave para la animación */
+        }
+        .quick-access-fin .a-fin:hover, .social-media-fin .a-fin:hover {
+            transform: scale(1.1); /* Escala los enlaces al pasar el mouse */
+        }
+        .contacts-fin .p-fin {
+            margin: 5px 0;
+            color: #D3D3D3;
+            display: flex;
+            align-items: center; /* Centra verticalmente el texto con el icono */
+        }
+        .contacts-fin .p-fin .i-fin, .quick-access-fin .a-fin .i-fin, .social-media-fin .a-fin .i-fin {
+            margin-right: 10px;
+            color: #D3D3D3;
+        }
+
+        .h3-fin {
+            color: #D3D3D3;
+            margin-bottom: 15px;
+        }
+
+        .a-fin, .p-fin {
+            color: #ffffff;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .name-fin{
+            text-align: center;
+            padding-top: 1px;
+            color: #A9A9A9;
+            width: 100%;
+            animation: fadeIn 3s ease-in-out; /* Animación de aparición */
+        }
+        .name-fin .p-fin{
+            margin-top: -90px;
+            margin-bottom: -50px;
+        }
+        .main-content {
+            min-height: calc(100vh - 400px); /* Ajusta este valor según sea necesario */
+        }
+    </style>
+</head>
+<body>
+    <div class="main-content">
+        <div class="hero-in">
+            <video autoplay muted loop id="myVideo">
+                <source src="img/Red and Black Welcome to My Channel Youtube Intro.mp4" type="video/mp4">
+                
+            </video>
+            <div class="overlay"></div>
+            <div class="content-in">
+                <div class="logo-in">
+                    <img class="img-in" src="image/logoblanco.png" alt="Boost Capitla Logo">
+                </div>
+                <div class="navigation">
+                    <ul class="ul-in">
+                        <li class="li-in"><a class="a-in" href="#">Home</a></li>
+                        <li class="li-in"><a class="a-in" href="#">About</a></li>
+                        <li class="li-in"><a class="a-in" href="#">Services</a></li>
+                        <li class="li-in"><a class="a-in" href="#">Programs</a></li>
+                        <li class="li-in"><a class="a-in" href="#">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="main-text">
+                    <h2 class="h2-in">Bienvenidos a</h2>
+                    <div class="text-wrapper">
+                        <h1 class="h1-in">
+                            <span class="span-in pos-h1 transparent-text">BOO</span><span class="green-text">ST</span><br>
+                            <span class="span-in pos-h2 transparent-text">CAPITAL</span>
+                        </h1>
+                    </div>
+                    <p class="p-in">La empresa de asistencia virtual, diseñada para ayudarte siempre.</p>
+                    <a href="#" class="a-in learn-more">Learn More</a>
+                </div>
+            </div>
+        </div>
+        <div class="bodi-med">
+            <aside class="sidebar-left">
+                <ul class="ul-med"> 
+                    <li class="li-med capitan-america" onclick="showHero('capitan-america')" style="--i: 1;">Capitán América</li>
+                    <li class="li-med iron-man" onclick="showHero('iron-man')" style="--i: 2;">Iron Man</li>
+                    <li class="li-med thor" onclick="showHero('thor')" style="--i: 3;">Thor</li>
+                    <li class="li-med doctor-strange" onclick="showHero('doctor-strange')" style="--i: 4;">Doctor Strange</li>
+                    <li class="li-med black-widow" onclick="showHero('black-widow')" style="--i: 5;">Black Widow</li>
+                </ul>
+                
+            </aside>
+        
+            <main class="main-med">
+                <!-- Sección para Capitán América -->
+                <section class="hero capitan-america active">
+                    <h1 class="h1-med">Neymar Jr</h1>
+                    <img class="img-med" src="img/ney4.png" alt="Capitán América">
+                    <p class="p-med">Neymar da Silva Santos Júnior, más conocido como Neymar Jr., es uno de los futbolistas más talentosos y reconocidos de su generación. Nacido en Mogi das Cruzes, Brasil, en 1992, Neymar comenzó a destacar desde muy joven en las categorías inferiores del Santos FC.
+                        Ascenso meteórico y reconocimi
+                        Debut profesional: A los 17 años, Neymar hizo su debut profesional con el Santos, donde rápidamente se convirtió en una figura clave y cautivó a los aficionados con su habilidad, regates y goles.
+                        Éxitos en Brasil: Conquistó numerosos títulos con el Santos, incluyendo la Copa Libertadores, la máxima competición a nivel de clubes en Sudamérica.
+                        Fichaje por el Barcelona: Su talento lo llevó a Europa, donde fichó por el Barcelona, uno de los clubes más grandes del mundo. Junto a Lionel Messi y Luis Suárez formó una de las delanteras más temibles de la historia del fútbol.
+                        </p>
+                </section>
+        
+                <!-- Sección para Iron Man -->
+                <section class="hero iron-man">
+                    <h1 class="h1-med">Neymar En Paris</h1>
+                    <img class="img-med" src="img/1.png" alt="Iron Man">
+                    <p class="p-med">Iron Man, o Tony Stark, es un genio, millonario, playboy y filántropo. Usa su armadura tecnológica para proteger al mundo.
+                        El fichaje de Neymar Jr al Paris Saint-Germain en 2017 fue uno de los traspasos más caros de la historia del fútbol, generando gran expectativa en torno al jugador brasileño.
+                        Impacto inmediato: Neymar se convirtió rápidamente en una figura clave del PSG, aportando su talento, habilidad y capacidad goleadora.
+                        Títulos y reconocimiento: Conquistó numerosos títulos con el equipo parisino, incluyendo varias Ligas de Francia y copas nacionales. Fue elegido como el mejor jugador de la Ligue 1 en su primera temporada.
+                        Juego espectacular: Sus regates, asistencias y goles deleitaron a los aficionados y lo consolidaron como uno de los mejores jugadores del mundo.
+                        Proyecto ambicioso: Junto a Mbappé y otros cracks, Neymar formó parte de un proyecto ambicioso para llevar al PSG a la cima del fútbol europeo. </p>
+                </section>
+        
+                <!-- Sección para Thor -->
+                <section class="hero thor">
+                    <h1 class="h1-med">Neymar En Brasil</h1>
+                    <img class="img-med" src="img/ney5.png" alt="Thor">
+                    <p class="p-med">Neymar Jr. comenzó su carrera futbolística en el Santos FC, uno de los clubes más populares de Brasil. Desde muy joven, su talento desbordante y su habilidad con el balón llamaron la atención de todos.
+        
+                        Los puntos clave de su paso por el Santos:
+                        
+                        Debut precoz: Con apenas 17 años, Neymar debutó en el primer equipo del Santos, demostrando una madurez y un talento fuera de lo común.
+                        Ascenso meteórico: Rápidamente se convirtió en una figura clave del equipo y en el ídolo de la afición santista. Su habilidad para regatear, su visión de juego y su capacidad goleadora lo convirtieron en uno de los jugadores más emocionantes de ver en el fútbol brasileño.
+                        Campeón de la Copa Libertadores: Uno de los momentos más destacados de su etapa en el Santos fue la conquista de la Copa Libertadores en 2011. En esta competición, Neymar demostró su calidad a nivel continental y marcó goles espectaculares.
+                        Reconocimiento mundial: Su desempeño en el Santos lo llevó a ser considerado uno de los jóvenes talentos más prometedores del mundo. Numerosos clubes europeos mostraron interés en ficharlo.
+                        Salida a Europa: En 2013, Neymar fue transferido al FC Barcelona, poniendo fin a una etapa exitosa en Brasil.</p>
+                </section>
+        
+                <!-- Sección para Doctor Strange -->
+                <section class="hero doctor-strange">
+                    <h1 class="h1-med">Neymar En Barcelona</h1>
+                    <img class="img-med" src="img/ney6.png" alt="Doctor Strange">
+                    <p class="p-med">La llegada de Neymar al FC Barcelona en 2013 fue un fichaje que revolucionó el mundo del fútbol. El brasileño se unió a Lionel Messi y Luis Suárez para formar uno de los tridentes ofensivos más temibles de la historia.
+        
+                        Los puntos clave de su paso por el Barça:
+                        
+                        Un tridente de ensueño: Junto a Messi y Suárez, Neymar formó la famosa "MSN". Esta delantera destacó por su velocidad, habilidad y capacidad goleadora, deslumbrando a los aficionados con jugadas espectaculares.
+                        Títulos y éxitos: Con el Barcelona, Neymar conquistó numerosos títulos, incluyendo Ligas de España, Copas del Rey y la Champions League. Su contribución fue fundamental para los éxitos del equipo catalán.
+                        Estilo de juego vistoso: Neymar aportó al equipo su característico estilo de juego, con regates vertiginosos, pases precisos y goles espectaculares. Su habilidad para desequilibrar a las defensas era una constante.
+                        </p>
+                </section>
+        
+                <!-- Sección para Black Widow -->
+                <section class="hero black-widow">
+                    <h1 class="h1-med">NEYMAR JR</h1>
+                    <img class="img-med" src="img/ney7.png" alt=" Black Widow">
+                    <p class="p-med">Neymar da Silva Santos Júnior, más conocido simplemente como Neymar, es uno de los futbolistas más talentosos y reconocidos de su generación. Desde sus inicios en Brasil hasta su llegada a Europa, su carrera ha estado marcada por el éxito, la polémica y una habilidad innata para el fútbol.Santos FC: Neymar comenzó su carrera profesional en el Santos FC, donde rápidamente se convirtió en una figura clave. Su desbordante talento, su capacidad goleadora y su habilidad para regatear lo convirtieron en uno de los jugadores más emocionantes del fútbol brasileño.
+                        Campeón de la Copa Libertadores: Con el Santos, conquistó la Copa Libertadores en 2011, demostrando su calidad a nivel continental y llamando la atención de los grandes clubes europeos.</p>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    
+    <!-- Nuevo pie de página -->
+    <div class="footer">
+        <div class="container-fin">
+            <div class="header-fin">
+                <h1 class="h1-fin">BOOST CAPITAL</h1>
+                <div class="logo-fin">
+                    <img class="img-fin" src="image/logoblanco.png" alt="Logo">
+                </div>
+            </div>
+            <div class="content-fin">
+                <div class="quick-access-fin">
+                    <h3 class="h3-fin">ACCESOS RÁPIDOS</h3>
+                    <a class="a-fin" href="#"><i class="fas fa-home"></i> INICIO</a>
+                    <a class="a-fin" href="#"><i class="fas fa-project-diagram"></i> PROYECTOS</a>
+                    <a class="a-fin" href="#"><i class="fas fa-file-alt"></i> PLANES</a>
+                    <a class="a-fin" href="#"><i class="fas fa-users"></i> EQUIPO</a>
+                    <a class="a-fin" href="#"><i class="fas fa-headset"></i> SOPORTE</a>
+                    <a class="a-fin" href="#"><i class="fas fa-ellipsis-h"></i> OTRA</a>
+                </div>
+                <div class="contacts-fin">
+                    <h3 class="h3-fin">CONTACTOS</h3>
+                    <p class="p-fin"><i class="fas fa-phone-alt"></i> +57 (321)-123-1234</p>
+                    <p class="p-fin"><i class="fas fa-envelope"></i> EJEMPLO@CORREO.COM</p>
+                    <p class="p-fin"><i class="fas fa-map-marker-alt"></i> CRA 1 # 2-3 CENTRO</p>
+                </div>
+                <div class="social-media-fin">
+                    <h3 class="h3-fin">REDES SOCIALES</h3>
+                    <a class="a-fin" href="#"><i class="fab fa-facebook-f"></i> Facebook</a>
+                    <a class="a-fin" href="#"><i class="fab fa-instagram"></i> Instagram</a>
+                    <a class="a-fin" href="#"><i class="fab fa-twitter"></i> Twitter</a>
+                    <a class="a-fin" href="#"><i class="fab fa-youtube"></i> YouTube</a>
+                </div>
+            </div>
+            <div class="name-fin">
+                <p class="p-fin">ALEJANDRO ROSERO @ 2024</p>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        document.addEventListener('scroll', function() {
+    const elements = document.querySelectorAll('.content, .navigation, .main-text');
+    const scrollTop = window.pageYOffset;
+
+    elements.forEach(element => {
+        if (element.offsetTop < scrollTop + window.innerHeight) {
+            element.style.opacity = '1';
+            element.style.transform = 'translateY(0)';
+        } else {
+            element.style.opacity = '0';
+            element.style.transform = 'translateY(20px)';
+        }
+    });
+});
+function showHero(hero) {
+    const heroes = document.querySelectorAll('.hero');
+    const sidebarItems = document.querySelectorAll('.sidebar-left ul li');
+    const bodiMed = document.querySelector('.bodi-med');  // Selecciona el div con clase bodi-med
+
+    heroes.forEach(h => {
+        if (h.classList.contains(hero)) {
+            h.classList.add('active');
+        } else {
+            h.classList.remove('active');
+        }
+    });
+
+    sidebarItems.forEach(item => {
+        if (item.classList.contains(hero)) {
+            item.classList.add('active');
+        } else {
+            item.classList.remove('active');
+        }
+    });
+
+    switch (hero) {
+        case 'capitan-america':
+            bodiMed.style.backgroundImage = "url('img/fon1.jpg_large')";
+            break;
+        case 'iron-man':
+            bodiMed.style.backgroundImage = "url('img/fondo.jpg')";
+            break;
+        case 'thor':
+            bodiMed.style.backgroundImage = "url('img/fondob.jpg')";
+            break;
+        case 'doctor-strange':
+            bodiMed.style.backgroundImage = "url('img/fondoba.jpg')";
+            break;
+        case 'black-widow':
+            bodiMed.style.backgroundImage = "url('img/fondop1.webp')";
+            break;
+        default:
+            bodiMed.style.backgroundImage = "url('img/fon1.jpg_large')";
+            break;
+    }
+}
+    </script>
+</body>
+</html>
